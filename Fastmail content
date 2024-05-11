@@ -1,0 +1,1320 @@
+Return-Path: <bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com>
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	 by sloti53n15 (Cyrus 3.11.0-alpha0-443-g0dc955c2a-fm-20240507.001-g0dc955c2) with LMTPA;
+	 Fri, 10 May 2024 07:59:02 -0400
+X-Cyrus-Session-Id: sloti53n15-1715342342-2243431-2-15331836412772472396
+X-Sieve: CMU Sieve 3.0
+X-Spam-known-sender: no
+X-Spam-sender-reputation: 500 (none)
+X-Spam-score: 1.9
+X-Spam-hits: DCC_CHECK 1.1, DCC_REPUT_95_98 0.7, HTML_IMAGE_RATIO_06 0.001,
+  HTML_MESSAGE 0.001, ME_NOAUTH 0.01, ME_SENDERREP_NEUTRAL 0.001,
+  MIME_HTML_ONLY 0.1, RCVD_IN_DNSWL_NONE -0.0001,
+  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED 0.001,
+  RCVD_IN_VALIDITY_RPBL_BLOCKED 0.001, SPF_HELO_NONE 0.001,
+  SPF_PASS -0.001, T_KAM_HTML_FONT_INVALID 0.01, LANGUAGES en,
+  BAYES_USED none, SA_VERSION 3.4.6
+X-Spam-source: IP='69.72.37.190', Host='m37-190.mailgun.net', Country='US',
+  FromHeader='com', MailFrom='com'
+X-Spam-charsets: subject='utf-8', html='utf-8'
+X-Resolved-to: socialplugsmm@sent.com
+X-Original-Delivered-to: martinsfola9@gmail.com
+X-Mail-from: bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com
+Received: from imap47.internal ([10.202.2.97])
+  by compute2.internal (LMTPProxy); Fri, 10 May 2024 07:59:02 -0400
+Received: from imap.gmail.com [172.253.62.108] by messagingengine.com
+  with IMAP for socialplugsmm@sent.com using TLSv1_3 TLS_AES_256_GCM_SHA384; Fri, 10 May 2024 07:59:01 -0400
+Delivered-To: martinsfola9@gmail.com
+Received: by 2002:a05:6a10:eb10:b0:55b:34f2:414 with SMTP id hx16csp382142pxb;
+        Fri, 10 May 2024 04:01:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBf4k1vuL/SeP0drZbli1fn58qFxUYwtvcjD3iUlpR9vl+aPA0SrmYTzmGNpHaatvSxbS1
+X-Received: by 2002:a25:c74f:0:b0:de4:6046:acb1 with SMTP id 3f1490d57ef6-dee4f343e50mr2307361276.16.1715338884817;
+        Fri, 10 May 2024 04:01:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715338884; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Y7bphLvvv2Ggr2Yg1eqfB0NGaVultjKAxm84FMm0fFsjOlQcrappqkOH2CGd13Yezc
+         Q5FvfNMgWzh88z4/sDulCETxT5YslGY13dDCBFNx74dcD68PZmcQUZ50Lixd5BJM0ALz
+         S+H6am9U2SvPZkTlvJ4SS1EXGQfwbOi3zLPvjhew9Gny2urRUwWP77DH358ZV7wrlznB
+         BMiuo2PvdDrh43QkEea1gi5xXBXg7yevq6Y3MVWpM9NyLdyYKlNt8UpMo2aI6/JQldeo
+         bRZSsR5Ri0wZdEwudoA7tJe0dbXXXl3VQIew16Gb1n8wiv8KkXNny053qTP2UK5TKMcp
+         tbqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:list-unsubscribe-post:list-unsubscribe
+         :date:subject:from:sender:to:message-id:dkim-signature
+         :dkim-signature;
+        bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+        fh=qzatgbIRe4mzkK58SuDmAahfDxczMeJfbpHr7otDuWQ=;
+        b=PIDRoc1gYQ49yqu5NugnKSe4Q2xIzDilMZv4mnU3rN8naTN892vEhVGvEozvd1Ve4M
+         WbwIv+RcreYwJnKklwPSFYvjgKlB++pAbDHeyIqPVhY17JDKWc8/qdKGQLuhRKWCWDNQ
+         z1RwySl4pCd2AU26hKBpYLMWAucQs71xvDikSbcr4NDexD156TVAmVI1ijaVoIdT9Rv6
+         1dnjSUR0NlipgwPKHLxRo3ek9FBQmraxSNiXQEQdh5nk01ngO2ih0i0xHdUH/TMag4lH
+         nAgGyZhHc6fUnzdERq4MgQa+OmfV+9l727fWv/QQ4aWLS9iYwj7IkOQYoQW3GNQTOR6u
+         /4wA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@signal.bitcoin.com header.s=pic header.b=E24Niv+F;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=mJz+MToX;
+       spf=pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) smtp.mailfrom="bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=bitcoin.com
+Received: from m37-190.mailgun.net (m37-190.mailgun.net. [69.72.37.190])
+        by mx.google.com with UTF8SMTPS id 3f1490d57ef6-debd382432fsi1815964276.273.2024.05.10.04.01.24
+        for <martinsfola9@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 May 2024 04:01:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) client-ip=69.72.37.190;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@signal.bitcoin.com header.s=pic header.b=E24Niv+F;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=mJz+MToX;
+       spf=pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) smtp.mailfrom="bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=bitcoin.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=signal.bitcoin.com; q=dns/txt; s=pic; t=1715338883; x=1715346083;
+ h=Content-Transfer-Encoding: Content-Type: List-Unsubscribe-Post: List-Unsubscribe: Date: Subject: Subject: From: From: Sender: Sender: To: To: Message-Id: X-Feedback-Id;
+ bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+ b=E24Niv+F2fMYpd2VnTqnY6mit6wU0zj9t8JvzoAcUct+Cc0mk+laUl6CsoLcQkvIxAyZqyNLrMV7WHgrCOz1g+p9qXlXn6PCG3YLLBmWONY5aVZPRHhbZyshDvDXbWYaJxzthVy7Dkeww2hagNoU3vJQuTP1r7m9Txm4K73GIXc=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1715338883; x=1715346083;
+ h=Content-Transfer-Encoding: Content-Type: List-Unsubscribe-Post: List-Unsubscribe: Date: Subject: Subject: From: From: Sender: Sender: To: To: Message-Id: X-Feedback-Id;
+ bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+ b=mJz+MToX3TDFMpb3K4gZMSZP8ej0dWqArh281x4/mpbv6Qz6T//KTonuqUEuz76Sq4KiESSsFbB1tfR8swMe4wdJ8UjZsmjBm9A8SMneanDpJMP4rU+6Hg/yryVOqYjN/1qYvcjj3yB8knKoMvcdObbFe/vA/5jZLmPuo3rB6Fc=
+X-Feedback-Id: noreply@bitcoin.com::649249e7a7e11ff52d4ad564:mailgun
+X-Mailgun-Sending-Ip: 69.72.37.190
+X-Mailgun-Sid: WyI3NTIxYSIsIm1hcnRpbnNmb2xhOUBnbWFpbC5jb20iLCI5YmE4YzAiXQ==
+Received: from onepush-web-enterprise-5445f6576c-4jtjs
+ (150.85.147.34.bc.googleusercontent.com [34.147.85.150]) by f7856f7f6da3 with
+ SMTP id 663dfe83220cacab4bdcebe3 (version=TLS1.3,
+ cipher=TLS_AES_128_GCM_SHA256); Fri, 10 May 2024 11:01:23 GMT
+Message-Id: <20240510110123.829ea2d3ba6ab637@signal.bitcoin.com>
+To: martinsfola9@gmail.com
+Sender: "Bitcoin.com Weekly Update" <noreply@bitcoin.com>
+From: "Bitcoin.com Weekly Update" <noreply@bitcoin.com>
+Subject: Kiyosaki's Crash Survival Rules, Snowden Warns Bitcoin Devs, and
+ More =?utf-8?b?4oCU?= Week in Review
+Date: Fri, 10 May 2024 11:01:22 +0000
+List-Unsubscribe: <https://unsubscribe.os-list.com/unsubscribe?token=eyJhbGciOiJFUzI1NiJ9.eyJpYXQiOjE3MTUzMzg4ODEsInVuc3Vic2NyaWJlX3Rva2VuIjoiYldGeWRHbHVjMlp2YkdFNVFHZHRZV2xzTG1OdmJUc3hNbUV5IiwiYXBwX2lkIjoiYjQxNWRlZDctODVjZC00ZjI3LWFlZmYtNTgzZGQ5N2YyOTVlIiwibm90aWZpY2F0aW9uX2lkIjoiMTBhOGVlNmUtMDFjMy00NTgxLTlmNjktOTAzYWEzOGVmOWZmIn0.87oSQAtiUkpc7lyvNTc0eG72Y2IczTjtcgpo_KKP6MlyL_rGFeByzyhGHp8XF3YryTgvXyXj0eGQ7YPfdRTIJw&aid=b415ded7-85cd-4f27-aeff-583dd97f295e&nid=10a8ee6e-01c3-4581-9f69-903aa38ef9ff>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailgun-Track: yes
+X-Mailgun-Track-Clicks: yes
+X-Mailgun-Track-Opens: yes
+X-Mailgun-Variables: {"notification_id":"10a8ee6e-01c3-4581-9f69-903aa38ef9ff","player_id":"6943c4fb-9239-444c-9f8b-bae3f845e1e7","app_id":"b415ded7-85cd-4f27-aeff-583dd97f295e","send_time":"1715338882"}
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-LinkName: martinsfola9@gmail.com
+X-ME-Message-Id: <1580736.7899fd4fe670ee7e400d8aafa2ba140288d028e2@popretr.messagingengine.com>
+X-LinkId: 1580736
+X-LinkUIDL: martinsfola9@gmail.com@imap.gmail.com 1-3437
+
+<!DOCTYPE html><html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office" lang=3D"en"><head><title></title><m=
+eta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><met=
+a name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1"><!--=
+[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInc=
+h><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]--><!--[if !mso]><=
+!--><link href=3D"https://fonts.googleapis.com/css2?family=3DOpen+Sans:wght=
+@400;700&amp;display=3Dswap" rel=3D"stylesheet" type=3D"text/css"><!--<![en=
+dif]--><style>
+*{box-sizing:border-box}body{margin:0;padding:0}a[x-apple-data-detectors]{c=
+olor:inherit!important;text-decoration:inherit!important}#MessageViewBody a=
+{color:inherit;text-decoration:none}p{line-height:inherit}.desktop_hide,.de=
+sktop_hide table{mso-hide:all;display:none;max-height:0;overflow:hidden}.im=
+age_block img+div{display:none} @media (max-width:620px){.social_block.desk=
+top_hide .social-table{display:inline-block!important}.image_block div.full=
+Width{max-width:100%!important}.mobile_hide{display:none}.row-content{width=
+:100%!important}.stack .column{width:100%;display:block}.mobile_hide{min-he=
+ight:0;max-height:0;max-width:0;overflow:hidden;font-size:0}.desktop_hide,.=
+desktop_hide table{display:table!important;max-height:none!important}}
+</style><!--[if true]><style>.forceBgColor{background-color: white !importa=
+nt}</style><![endif]--></head><body class=3D"forceBgColor" style=3D"backgro=
+und-color:transparent;margin:0;padding:0;-webkit-text-size-adjust:none;text=
+-size-adjust:none"><span style=3D"color: transparent; display: none; height=
+: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: a=
+ll; visibility: hidden; width: 0;">Read all of the biggest stories of the w=
+eek.=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;</span><table class=3D"nl-container" wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:tr=
+ansparent"><tbody><tr><td><table class=3D"row row-1" align=3D"center" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-size:auto">=
+<tbody><tr><td><table class=3D"row-content stack" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0;background-size:auto;color:#000;width:=
+600px;margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1"=
+ width=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:=
+400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-align:top;b=
+order-top:0;border-right:0;border-bottom:0;border-left:0"><table class=3D"t=
+ext_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"10" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace=
+:0;word-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-f=
+amily:sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open=
+ Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:14.3=
+99999999999999px;color:#555;line-height:1.2"><p style=3D"margin:0;font-size=
+:12px;mso-line-height-alt:14.399999999999999px">&nbsp;</p></div></div></td>=
+</tr></tbody></table><table class=3D"image_block block-2" width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:10px;padding-left:30px;padding-right:10px;padding-top:=
+30px;width:100%"><div class=3D"alignment" align=3D"center" style=3D"line-he=
+ight:10px"><div style=3D"max-width:180px"><a href=3D"https://email.signal.b=
+itcoin.com/c/eJxMkD0OIyEMRk8zdERgmwEXU2yTa0QGTII0f8ogRXv7VbZK_X3Fe0_O89Hrks=
+mHqjXaFEq11CBa0dZsSFgrxwYc1NSFs6TijC4--oCYUkLzWtCDAs1RQkApLtbihFKuJA6RFUxfw=
+AG54J33zgPeErAKVMwyS54xTuSu_txlveU-ytH3Wzk2sy6vMc5rwj8T3Ce4fz6f332Cu9mP0Vsv=
+Mvqxfz28k6Q6q3W-oKWQvOU2s2WHIpi0cWvmXOWvvr_3mQkLtWwZkC0RFcstZZtFsSUK6jWa97L=
+Je_T9ascqPJF7btLX_4SX7vUx-vYTBP4FAAD__6JaZDE" target=3D"_blank" style=3D"ou=
+tline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.c=
+om/images/b415ded7-85cd-4f27-aeff-583dd97f295e/News%20Email%20Assets/full-l=
+ogo-black-1000px.png" style=3D"display:block;height:auto;border:0;width:100=
+%" width=3D"180" alt=3D"Bitcoin.com Logo" title=3D"Bitcoin.com Logo" height=
+=3D"auto"></a></div></div></td></tr></tbody></table><table class=3D"text_bl=
+ock block-3" width=3D"100%" border=3D"0" cellpadding=3D"25" cellspacing=3D"=
+0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;wor=
+d-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-family:=
+Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open=
+ Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:14.3=
+99999999999999px;color:#0f121a;line-height:1.2"><p style=3D"margin:0;font-s=
+ize:12px;mso-line-height-alt:14.399999999999999px"><strong><span style=3D"f=
+ont-size:20px;">Robert Kiyosaki shares crash survival rules</span></strong>=
+</p></div></div></td></tr></tbody></table></td></tr></tbody></table></td></=
+tr></tbody></table><table class=3D"row row-2" align=3D"center" width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=
+=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-r=
+space:0;background-color:#fff;border-radius:0;color:#000;width:600px;margin=
+:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1" width=3D"10=
+0%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-ali=
+gn:left;padding-bottom:5px;padding-top:5px;vertical-align:top;border-top:0;=
+border-right:0;border-bottom:0;border-left:0"><table class=3D"image_block b=
+lock-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><=
+tr><td class=3D"pad" style=3D"padding-left:25px;padding-right:25px;width:10=
+0%"><div class=3D"alignment" align=3D"center" style=3D"line-height:10px"><d=
+iv class=3D"fullWidth" style=3D"max-width:540px"><a href=3D"https://email.s=
+ignal.bitcoin.com/c/eJxM0DGO5CAQheHT2Fm1oAAbAgeb9DVGBRRtNDRYQE9rbr-alVaa-P3=
+J--i6PnI8vJYmctzBmhBBJ9yBOCUwVsXo9oTO8BoP58kGsfIhd2mUstaq9TyCQRGjDQptkCF53n=
+3wJjGi2Z2VvOYDBWphpJBSSFQ3i44Jo_K0kd_Uvmgx8qNSufk8Q8v1FtpzLcc55zUW9WfB-4L3y=
+u_xO1jw3pvnPuEzf7dBnxnGSZ0HhE7jhPHqX_mLCvRX4QFv6vX_dNIAz49XhTzhnUsBz0DgKUKr=
+vOB9rW3mlAPN3OqPkBRkmTcGIYMCbawElzYHTigiZTm5lNar0Df3n3xzWgWdPDhUDrTWAVyyHjy=
+xSlYblryv_XhSn7mO1Aq5RYvHk3L5931wjR8zP39R498AAAD__4U-hn8" target=3D"_blank"=
+ style=3D"outline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage=
+=2Eonesignal.com/images/b415ded7-85cd-4=
+f27-aeff-583dd97f295e/kiyosaki-crash-r=
+ules.jpg" style=3D"display:block;height:auto;border:0;width:100%" width=3D"=
+540" alt=3D"Robert Kiyosaki Shares Crash Survival Rules" title=3D"Robert Ki=
+yosaki Shares Crash Survival Rules" height=3D"auto"></a></div></div></td></=
+tr></tbody></table><table class=3D"text_block block-2" width=3D"100%" borde=
+r=3D"0" cellpadding=3D"25" cellspacing=3D"0" role=3D"presentation" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><t=
+d class=3D"pad"><div style=3D"font-family:Arial,sans-serif"><div class=3D""=
+ style=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica=
+,Arial,sans-serif;mso-line-height-alt:21.6px;color:#0f121a;line-height:1.8"=
+><p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">Rich Dad Poor Dad author Robert Kiyosaki ha=
+s cautioned that a crash has begun, highlighting its severity. The famous a=
+uthor also shared his crash survival rules.</span></p><p style=3D"margin:0;=
+font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p style=3D"margin:0;f=
+ont-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">He urged investors to invest in bitcoin, al=
+ongside gold and silver, emphasizing that they are =E2=80=9Creal money that=
+ goes up in value, especially in a market crash.=E2=80=9D</span></p><p styl=
+e=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p dir=
+=3D"ltr" style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;"><a href=3D"https://email.signal.bitcoin.com=
+/c/eJxM0DGO5CAQheHT2Fm1oAAbAgeb9DVGBRRtNDRYQE9rbr-alVaa-P3J--i6PnI8vJYmctzB=
+mhBBJ9yBOCUwVsXo9oTO8BoP58kGsfIhd2mUstaq9TyCQRGjDQptkCF53n3wJjGi2Z2VvOYDBWp=
+hpJBSSFQ3i44Jo_K0kd_Uvmgx8qNSufk8Q8v1FtpzLcc55zUW9WfB-4L3yu_xO1jw3pvnPuEzf7=
+dBnxnGSZ0HhE7jhPHqX_mLCvRX4QFv6vX_dNIAz49XhTzhnUsBz0DgKUKrvOB9rW3mlAPN3OqPk=
+BRkmTcGIYMCbawElzYHTigiZTm5lNar0Df3n3xzWgWdPDhUDrTWAVyyHjyxSlYblryv_XhSn7mO=
+1Aq5RYvHk3L5931wjR8zP39R498AAAD__4U-hn8" target=3D"_blank" style=3D"text-de=
+coration: underline; color: #007cff;" rel=3D"noopener">Read More</a></span>=
+</p></div></div></td></tr></tbody></table><table class=3D"divider_block blo=
+ck-3" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><t=
+r><td class=3D"pad" style=3D"padding-bottom:20px;padding-left:25px;padding-=
+right:25px;padding-top:10px"><div class=3D"alignment" align=3D"center"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" w=
+idth=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><t=
+d class=3D"divider_inner" style=3D"font-size:1px;line-height:1px;border-top=
+:1px solid #f1f1f3"><span>=E2=80=8A</span></td></tr></tbody></table></div><=
+/td></tr></tbody></table><table class=3D"text_block block-4" width=3D"100%"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word">
+<tbody><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-left:25px;=
+padding-right:25px;padding-top:5px"><div style=3D"font-family:sans-serif"><=
+div class=3D"" style=3D"font-size:12px;font-family:'Open Sans','Helvetica N=
+eue',Helvetica,Arial,sans-serif;mso-line-height-alt:24px;color:#0f121a;line=
+-height:2"><p style=3D"margin:0;font-size:14px;text-align:left;mso-line-hei=
+ght-alt:26px">
+<span style=3D"font-size:13px;">Join the Bitcoin.com News Telegram channel =
+for the latest crypto news updates, sent straight to your phone!</span></p>=
+</div></div></td></tr></tbody></table><table class=3D"button_block block-5"=
+ width=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td=
+ class=3D"pad"><div class=3D"alignment" align=3D"center"><!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"https://email.signal.bitcoin.com/c/eJ=
+xM0D2O3DAMxfHT2J0GEknZYuEiKeYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmOD=
+GYnauZiwlp5NuCoY104Syp-1CXMISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4=
+SMAqUDHLJHnCeSB_t69DtkduvZzteJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFen=
+tPD5fgpekOqnzoaCjmIJjm9ixRxFMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur9=
+6O285NeCD_tUvb_q289ahrb_uPKPA3AAD__7tTZic" style=3D"height:38px;width:123px=
+;v-text-anchor:middle;" arcsize=3D"11%" stroke=3D"false" fillcolor=3D"#2793=
+ff">
+<w:anchorlock/>
+<v:textbox inset=3D"0px,0px,0px,0px">
+<center style=3D"color:#ffffff; font-family:Arial, sans-serif; font-size:16=
+px">
+<![endif]-->
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0D2O3DAMxfHT2J0GEknZYuEiK=
+eYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmODGYnauZiwlp5NuCoY104Syp-1CXM=
+ISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4SMAqUDHLJHnCeSB_t69DtkduvZz=
+teJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFentPD5fgpekOqnzoaCjmIJjm9ixRx=
+FMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur96O285NeCD_tUvb_q289ahrb_uPK=
+PA3AAD__7tTZic" target=3D"_blank" style=3D"text-decoration:none;display:inl=
+ine-block;color:#ffffff;background-color:#2793ff;border-radius:4px;width:au=
+to;border-top:0px solid transparent;font-weight:400;border-right:0px solid =
+transparent;border-bottom:0px solid transparent;border-left:0px solid trans=
+parent;padding-top:5px;padding-bottom:5px;font-family:'Open Sans', 'Helveti=
+ca Neue', Helvetica, Arial, sans-serif;font-size:16px;text-align:center;mso=
+-border-alt:none;word-break:keep-all;"><span style=3D"padding-left:20px;pad=
+ding-right:20px;font-size:16px;display:inline-block;letter-spacing:normal;"=
+><span style=3D"word-break: break-word; line-height: 28.8px;">Follow now</s=
+pan></span></a>
+<!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div></td></tr=
+></tbody></table><table class=3D"divider_block block-6" width=3D"100%" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=
+=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padding-top:20=
+px"><div class=3D"alignment" align=3D"center"><table border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"ms=
+o-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divider_inner"=
+ style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f1f3"><span=
+>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbody></table>=
+<table class=3D"image_block block-7" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0=
+;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"width:100%;paddi=
+ng-right:0;padding-left:0"><div class=3D"alignment" align=3D"center" style=
+=3D"line-height:10px"><div class=3D"fullWidth" style=3D"max-width:540px"><a=
+ href=3D"https://email.signal.bitcoin.com/c/eJxM0LuOIyEQheGnaTJaQBW3oANv4Hg=
+3WI00iVVAYSP1Td2MrHn7kSdy_gXn_LTvt1amhNoWLl4Gm4vEarwkrlXaAKVEX020LMoUE4WsBE=
+_aawsQQgDxmIpBF1GjttZ5pyCBZZ81G1uL0tmLNhllUFmttFbawBhMZDIFEjlKDvyA6mz3leYxt=
+Z63to55W8Q8PXrfzwEug7kO5poOWvNjfNI8c3-Xg7n-N38__v35en5ekli33mrL1Nu2vs5pRYHZ=
+sVQ6g0QbtIzVRRkVEEHgGmsV-0zffLy4iwgZa5LRQJSImGWsIclEDDWgZc1eHNNCR2_rWbeZ4oD=
+qvlCbf2efvJZbb8tbJfMTAAD__zHXax0" target=3D"_blank" style=3D"outline:none" =
+tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.com/images/b4=
+15ded7-85cd-4f27-aeff-583dd97f295e/price_top.png" style=3D"display:block;he=
+ight:auto;border:0;width:100%" width=3D"540" alt=3D"crypto prices markets" =
+title=3D"crypto prices markets" height=3D"auto"></a></div></div></td></tr><=
+/tbody></table><table class=3D"image_block block-8" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D=
+"width:100%;padding-right:0;padding-left:0"><div class=3D"alignment" align=
+=3D"center" style=3D"line-height:10px"><div class=3D"fullWidth" style=3D"ma=
+x-width:540px"><a href=3D"https://email.signal.bitcoin.com/c/eJxM0L1u7CAQxf=
+GnMR0WDANmChf3FlvkAVKkWQ0w7CL5SzZSlLePNtX2v-KcPx_HvZU5ofVFyqSjz0VjhUmz1Kp9d=
+KXQVIG8qDJT4piNktlO1jsXY3TqOScyniggYE4yYUEjRIaAc_CAwak2gwE03hprjQU3RiBhKC5x=
+4BTcNKC52mPjZUyt571tY95XtczP3o9rcP8GuA1wSydv-Tl-87JIf5cD3Oij_v-Cx2e-ktr23mr=
+L3Nu-vc5Zw1EkiDY2O40-Wk01kCbjmF2USrWqY-EfOV88ELqMNWkCRxoRs6Yak04srkb0YmVS57=
+zy2dt21X1hGtA8Vm7L3-xLtnLvbX2rBL8BAAD__02XazA" target=3D"_blank" style=3D"o=
+utline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.=
+com/images/b415ded7-85cd-4f27-aeff-583dd97f295e/price_bot.png" style=3D"dis=
+play:block;height:auto;border:0;width:100%" width=3D"540" alt=3D"crypto pri=
+ces markets" title=3D"crypto prices markets" height=3D"auto"></a></div></di=
+v></td></tr></tbody></table><table class=3D"divider_block block-9" width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"=
+pad" style=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padd=
+ing-top:20px"><div class=3D"alignment" align=3D"center"><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divi=
+der_inner" style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f=
+1f3"><span>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbod=
+y></table><table class=3D"text_block block-10" width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tabl=
+e-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=
+=3D"pad" style=3D"padding-bottom:10px;padding-left:25px;padding-right:25px;=
+padding-top:25px"><div style=3D"font-family:sans-serif"><div class=3D"" sty=
+le=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Ari=
+al,sans-serif;mso-line-height-alt:14.399999999999999px;color:#555;line-heig=
+ht:1.2"><p style=3D"margin:0;font-size:14px;mso-line-height-alt:16.8px"><sp=
+an style=3D"font-size:22px;"><strong><span style=3D"">In the news</span></s=
+trong></span></p></div></div></td></tr></tbody></table><table class=3D"text=
+_block block-11" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0=
+;word-break:break-word"><tbody><tr><td class=3D"pad" style=3D"padding-botto=
+m:10px;padding-left:25px;padding-right:25px;padding-top:25px"><div style=3D=
+"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font=
+-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-he=
+ight-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;mso-lin=
+e-height-alt:21.6px"><strong><span style=3D"font-size:15px;"><a href=3D"htt=
+ps://email.signal.bitcoin.com/c/eJxM0LFu5CAQgOGnsbtZwYANFC6u8WtEAwy7SPZgGS6=
+rvP0ppxTpv-b_6bo-at6i1Uvm7MAvKYMt6IC4FFi8yTm4gmHhOW8hkk9q5k07vRjjvTfza0tkAj=
+nL3q2ElohXg5STsys6lRPOdUOFVi1aaa00mofHwITZRFoprsZNVvX6FDoesY7UqjxSO-dje41x9=
+cn8mXCfcBd-999gwr1Le2cWqL3_5Q6lCh3wpluqPGE0-NGQ-ZOPdvHdoQlcd_2k9AUsL5LEJ8vo=
+E-6ztFFLTTRqk-8rWpFnXhmUTgbs4jWEsgYIyhAZzyWUMl8HffH9zddgTbIlQkATwFqbIBQfIRK=
+b4u3Cmt18byfdo0ov7aAwWfU8qR7_eztL_hj1_LUX_wUAAP__4gqCmw" target=3D"_blank" =
+style=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><str=
+ong><span style=3D"font-size:15px;">Snowden issues warning to Bitcoin devel=
+opers on privacy enhancements</span></strong></a></span></strong><br></p><p=
+ style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">In the wake of the U.S. intensifying its cl=
+ampdown on privacy-oriented software and Zksnacks closing its coordinated c=
+oinjoin service, Edward Snowden has issued a stern warning to Bitcoin devel=
+opers.</span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21=
+=2E6px">&nbsp;</p><p style=3D"margin:0;f=
+ont-size:14px;mso-line-height-alt:25.=
+2px">
+<span style=3D"font-size:14px;">Snowden emphasizes that time is running out=
+ for enhancing privacy and insists it must be integrated at the protocol le=
+vel.</span></p></div></div></td></tr></tbody></table><table class=3D"text_b=
+lock block-12" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;wo=
+rd-break:break-word"><tbody><tr><td class=3D"pad" style=3D"padding-bottom:1=
+0px;padding-left:25px;padding-right:25px;padding-top:25px"><div style=3D"fo=
+nt-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font-fa=
+mily:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-heigh=
+t-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;mso-line-h=
+eight-alt:21.6px">
+<strong><span style=3D"font-size:15px;"><a href=3D"https://email.signal.bit=
+coin.com/c/eJxM0DuO2zAQANDTSN0Y_H8KFWl8jcWQHNqDSJRCcrPw7YNdpHD_qofX9cFlS0ba=
+QsVDsLmAqcoDUq1ggy4l-qqipbVsMWHIYqVNemm1DiHo9blJq4N1GKL12TqPwUVMXrjsazFU_Mq=
+bEsoIK4WUQip9CyoSqqITOkxO-8WIwY-G-y3xzCe3Wz6Pdd-ec15j0b8WdV_UvdHXeAeLuv-m9s=
+IGV6fBhdqETn8-acwB_x0c3KjDgR3n82xQ-METd5gndPrL9AUNJ59tQO6va575s3dq-QWdHnzQo=
+u5rOydXzj_s-0oKDESOQMiswdggIVYXIQqNqAPVWOt67fii_s1dNDqbmiAqHcEYkyHWkCAh6RqM=
+JUl-7duBfXIb9dwxLkY8DuT9Z2FQKx-Tj7d09S8AAP__M4CLGQ" target=3D"_blank" style=
+=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener">Kenyan pr=
+esident asks bitcoin miner to review nation=E2=80=99s crypto regime</a></sp=
+an></strong><br></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt=
+:25.2px">
+<span style=3D"font-size:14px;">The Kenyan President William Ruto recently =
+revealed that his government has appointed Bitcoin mining company Marathon =
+Digital as its consultant to review its cryptocurrency regime.</span></p><p=
+ style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p =
+style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">The U.S.-based Bitcoin miner is reportedly =
+set to discuss electricity usage in cryptocurrency mining with the Kenyan E=
+nergy Ministry.</span></p></div></div></td></tr></tbody></table><table clas=
+s=3D"text_block block-13" width=3D"100%" border=3D"0" cellpadding=3D"25" ce=
+llspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table=
+-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D=
+"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font=
+-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-he=
+ight-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;font-si=
+ze:14px;mso-line-height-alt:25.2px"><a href=3D"https://email.signal.bitcoin=
+=2Ecom/c/eJxM0LGO4yAQgOGnsbuJgAEbChfX5D=
+VWAwwxOgIWkF3t259yVfr_bz66rq8cD6-liRx3=
+sCZE0EntQJwSGIsxuj0pZ3iNh_Nkg1j5kLs0iNZaXM_DcNwQHUVn4-atN0zSxhh9QIsew5oPJZQ=
+WRgophVR4s8oxqYieNvIb7osWIz8qlZvPM7Rcb6E913Kcc15jwT-Lui_qXvlnfAaLuv9Q71zBv1=
+LiOWEwD6gNqEzulWb-ZpgNXgNiK4U60IDOg_s3Q3i91_ALnvvfcebOcLYSc32AtBZ8LiW3CrlCo=
+HEu6r7WNnPKgWZu9Y0mBVnmjUHIgKCNleDS5sAJJELLyaW0XoV-ub_zzWkMOnlwCh1orQO4ZD14=
+YkxWG5a8r_14Up-5jtQKuUWLx5Ny-c8xuMavmZ8f-upfAAAA___QFI3X" target=3D"_blank"=
+ style=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><st=
+rong><span style=3D"font-size:15px;">Warren Buffett sees no alternative to =
+US dollar as reserve currency</span></strong></a><br>
+<span style=3D"font-size:14px;">Warren Buffett, chairman and CEO of Berkshi=
+re Hathaway, asserts that there is currently no viable alternative to the U=
+=2ES. dollar as the world=E2=80=99s reserv=
+e currency, suggesting that U.S. de=
+bt will remain acceptable =E2=80=9Cfor a very long time.=E2=80=9D</span></p=
+><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p>=
+<p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">Berkshire currently sits on a cash pile of =
+$188 billion, which Buffett views as =E2=80=9Cquite attractive.=E2=80=9D</s=
+pan></p></div></div></td></tr></tbody></table><table class=3D"text_block bl=
+ock-14" width=3D"100%" border=3D"0" cellpadding=3D"25" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-bre=
+ak:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-family:Arial=
+,sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open Sans=
+','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:21.6px;co=
+lor:#0f121a;line-height:1.8"><p style=3D"margin:0;font-size:14px;mso-line-h=
+eight-alt:25.2px">
+<strong><span style=3D"font-size:15px;"><a href=3D"https://email.signal.bit=
+coin.com/c/eJxM0D2O5CAQQOHT2FmN-LUhcLBJX2NUQFV3aTFYBs1obr_qjSZ42Ys-vK5PKUdy=
+2hcqOwSfCzg2OyAxgw-2lLiziZ7WcsSEIauVDr1rb20Iwa6vIwSPnB1uIXDRiTzbnW3Ys0HtsqN=
+VDqOMU14rrZU29iOYSGiKTbhh2uy-ODXk2bB-JJm5S_vI_Vzr8ZrzGov9s5jHYh6NvsfvYTEPaV=
+805kltAst9At_Y_lZpMOm8Ks3eIFEV-qIBo1dsCN9SKyTK_SSYr3dyF6h4P2lMyPfPNTvgGDQX8=
+1hbn8KScUpvbyitMBBtBEpnC84HDZG3CFFZRBuII_N6Vfyh-71v0dnsOEE0NoJzLkPkkCAhWQ7O=
+k6Z9vY8T7yltcK8YF6eeJ0r9TzColc8p5y9x8y8AAP__FnSKHQ" target=3D"_blank" style=
+=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><strong><=
+span style=3D"font-size:15px;">Franklin Templeton believes SOL to become th=
+ird largest crypto asset</span></strong></a></span></strong><br>
+<span style=3D"font-size:14px;">Franklin Templeton, a leading investment fi=
+rm with over $1.5 trillion in assets under management (AUM), believes Solan=
+a has the potential to become the third-largest cryptocurrency in the marke=
+t.</span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px=
+">&nbsp;</p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px"=
+>
+<span style=3D"font-size:14px;">The firm praised the resilience of the proj=
+ect, its continued airdrops, and the work developers have undertaken to fix=
+ the network=E2=80=99s recent congestion issues.</span></p></div></div></td=
+></tr></tbody></table><table class=3D"divider_block block-15" width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" =
+style=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padding-t=
+op:20px"><div class=3D"alignment" align=3D"center"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divider_=
+inner" style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f1f3"=
+><span>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbody></=
+table><table class=3D"heading_block block-16" width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table=
+-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"padding=
+-bottom:5px;padding-left:25px;padding-right:25px;padding-top:5px;text-align=
+:center;width:100%"><h1 style=3D"margin:0;color:#555;direction:ltr;font-fam=
+ily:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;=
+font-weight:700;letter-spacing:normal;line-height:180%;text-align:left;marg=
+in-top:0;margin-bottom:0;mso-line-height-alt:23.400000000000002px"><span cl=
+ass=3D"tinyMce-placeholder">Sponsored by Bitcoin.com News</span></h1></td><=
+/tr></tbody></table><table class=3D"image_block block-17" width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" sty=
+le=3D"width:100%;padding-right:0;padding-left:0"><div class=3D"alignment" a=
+lign=3D"center" style=3D"line-height:10px"><div class=3D"fullWidth" style=
+=3D"max-width:540px"><a href=3D"https://email.signal.bitcoin.com/c/eJxMkL2u=
+4yAQRp_GdEQwAxgKim38GlcDzCRI_pONNtq3X-VWqb-vOOfQef70louzvnGbdfS1aScwa2IR7SO=
+2lmaB5Fm1nArFahRnO1uPGGNE9cpoQ3A-UZk9kq81kDG-Sa2ARgx41TMYcMZbY62xgI8IiQkaFg=
+pUAs6TM3d_7rQ-Sh_16PujHpta82uM857wzwTLBMv7_f7eJ1io_eVr9JsnWNR-jC690ujH_nGyh=
+iJzYG1sRe18tDpJSDoZJMLIkkTUudI_vj73kBxWJ0UnwKSdc1UniUUXYpToPFue1ZU3ukbfbzlW=
+SpMzz436-kt7895-Rt--4sD_AAAA___dBmiX" target=3D"_blank" style=3D"outline:no=
+ne" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.com/image=
+s/b415ded7-85cd-4f27-aeff-583dd97f295e/News%20Email%20Assets/advertise-emai=
+l%402x.png" style=3D"display:block;height:auto;border:0;width:100%" width=
+=3D"540" alt=3D"Advertise on Bitcoin.com News" title=3D"Advertise on Bitcoi=
+n.com News" height=3D"auto"></a></div></div></td></tr></tbody></table><tabl=
+e class=3D"paragraph_block block-18" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0=
+;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:5px;padding-left:25px;padding-right:25px;padding-top:5=
+px"><div style=3D"color:#555;direction:ltr;font-family:'Open Sans','Helveti=
+ca Neue',Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;letter-s=
+pacing:0;line-height:180%;text-align:left;mso-line-height-alt:21.6px"><p st=
+yle=3D"margin:0">
+With 4 million monthly unique visitors, over 9,000,000 monthly pageviews, a=
+nd a massive social media following, don't miss the chance to <a href=3D"ht=
+tps://email.signal.bitcoin.com/c/eJxMkL2u4yAQRp_GdEQwAxgKim38GlcDzCRI_pONNt=
+q3X-VWqb-vOOfQef70louzvnGbdfS1aScwa2IR7SO2lmaB5Fm1nArFahRnO1uPGGNE9cpoQ3A-U=
+Zk9kq81kDG-Sa2ARgx41TMYcMZbY62xgI8IiQkaFgpUAs6TM3d_7rQ-Sh_16PujHpta82uM857w=
+zwTLBMv7_f7eJ1io_eVr9JsnWNR-jC690ujH_nGyhiJzYG1sRe18tDpJSDoZJMLIkkTUudI_vj7=
+3kBxWJ0UnwKSdc1UniUUXYpToPFue1ZU3ukbfbzlWSpMzz436-kt7895-Rt--4sD_AAAA___dBm=
+iX" target=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;"=
+ rel=3D"noopener">advertise</a> your crypto project or token with Bitcoin=
+=E2=80=A4com News. Reach out to <a href=3D"mailto:ads@bitcoin.com" target=
+=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;" rel=3D"no=
+opener">ads@bitcoin.com</a> today!&nbsp;
+</p></div></td></tr></tbody></table><table class=3D"image_block block-19" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td cl=
+ass=3D"pad" style=3D"padding-bottom:25px;padding-left:10px;padding-right:10=
+px;padding-top:25px;width:100%"><div class=3D"alignment" align=3D"center" s=
+tyle=3D"line-height:10px"><div style=3D"max-width:180px">
+<a href=3D"https://email.signal.bitcoin.com/c/eJxMkD0OIyEMRk8zdERgmwEXU2yTa=
+0QGTII0f8ogRXv7VbZK_X3Fe0_O89HrksmHqjXaFEq11CBa0dZsSFgrxwYc1NSFs6TijC4--oCY=
+UkLzWtCDAs1RQkApLtbihFKuJA6RFUxfwAG54J33zgPeErAKVMwyS54xTuSu_txlveU-ytH3Wzk=
+2sy6vMc5rwj8T3Ce4fz6f332Cu9mP0VsvMvqxfz28k6Q6q3W-oKWQvOU2s2WHIpi0cWvmXOWvvr=
+_3mQkLtWwZkC0RFcstZZtFsSUK6jWa97LJe_T9ascqPJF7btLX_4SX7vUx-vYTBP4FAAD__6JaZ=
+DE" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"><img src=3D"ht=
+tps://beefree-storage.onesignal.com/images/b415ded7-85cd-4f27-aeff-583dd97f=
+295e/News%20Email%20Assets/full-logo-black-1000px.png" style=3D"display:blo=
+ck;height:auto;border:0;width:100%" width=3D"180" alt=3D"Bitcoin.com Logo" =
+title=3D"Bitcoin.com Logo" height=3D"auto"></a></div></div></td></tr></tbod=
+y></table><table class=3D"social_block block-20" width=3D"100%" border=3D"0=
+" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-t=
+able-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad"><div class=
+=3D"alignment" align=3D"center"><table class=3D"social-table" width=3D"216p=
+x" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0;display:inline-block"><tbody>=
+<tr><td style=3D"padding:0 2px 0 2px"><a href=3D"https://email.signal.bitco=
+in.com/c/eJxM0D2u5CAQBODTmAwL6MbQgYNN5hpPDXS_Qes_jb2y5var2WD18q-kquLj-OptLu=
+hjk5ZsjrVZ1JAsi6qNGVqjpIGimDZT4VydkdknHwFyzmCec0xEUhtMTA6amzCH2CoiRPRJkzd9D=
+i6gi95573yAMQcSDg0KT1wmSAO6s39vvIylX3Xv21j31Szz87qOc4BfQ3gM4XHf96hcpez77w8Y=
+wqP8ef-PbHKfZtuvrr3y1fftM8w7ziKTWOcrWIzZW9KJLDlghixKquZY-C2vD58IoaIWSwHIImK=
+1pLnYwgKaMYqXZF7zyq-rb6fuC9OA7nvlvvyrfMrWvq6-_ngo_A0AAP__5ftqZg" target=3D"=
+_blank"><img src=3D"https://app-rsrc.getbee.io/public/resources/social-netw=
+orks-icon-sets/t-outline-circle-dark-gray/facebook@2x.png" width=3D"32" hei=
+ght=3D"auto" alt=3D"Facebook" title=3D"Facebook" style=3D"display:block;hei=
+ght:auto;border:0"></a></td><td style=3D"padding:0 2px 0 2px"><a href=3D"ht=
+tps://email.signal.bitcoin.com/c/eJxMkLuOIyEQRb-mybCA4lVBB7srOdzIuVVAlY3UL3=
+UjrfbvR55o4nuDcw4dx7O3uXgbGrekc6hNe3FJE4vokKE1TOIwsGozFsrVKJ5tsgEg5wzqPXPEF=
+tkTJRMtZKouJsME4hDIWVF9dsZ5E6yx1lgHt-yQyTUoFKlESJM3V39ttNxKH3Xv263uq1rm9xjH=
+NcGvyd0ndx__-hh8frbJ3X8__jz-qm0fXXql0fftI2INZebI2tgK2odsNUpEjQaIILOgiDoW-s_=
+n5x7RQ_VSNDpA7b2vGiUXXYhBsg9sOalzXukcfbtkXwgnb14r9eUb8eKtPUdffxRxXwEAAP__KB=
+hkhA" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/public/resou=
+rces/social-networks-icon-sets/t-outline-circle-dark-gray/twitter@2x.png" w=
+idth=3D"32" height=3D"auto" alt=3D"Twitter" title=3D"Twitter" style=3D"disp=
+lay:block;height:auto;border:0"></a></td><td style=3D"padding:0 2px 0 2px">=
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0LGO3iAQBOCngQ4LWDBL4SKNX=
+-O0wO4dio2t35ase_voT1Jc_400M3SeH70tJbjYuCWDsTYTxCdDLGIiQms5ic-RdVtyIaxW8-KS=
+iwCICPprkYjRz8m2IoDYmMjVWFKIAS1EbLov3vpgo7POWedhQp-ZfINCM5UZkgr26p-Dtqn0ux5=
+9TPXY9bZ83fd5Kfil_Kr8-jzPtPXxm9s_oPxaj_2k8a38-j9o6rGbwc-l_KrHcXfple5-jPdKZw=
+mZZzbWVTAhojNZ5myyBSJAliyiz42--fXmcw5QgxSTPWQTQqgmCxZTiEEwRHac9GvZ6XX3ccmxU=
+VbBfu7Ut7_9Lx7t4-77j7v8nwAAAP__JMNvJg" target=3D"_blank"><img src=3D"https:=
+//app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-outline-c=
+ircle-dark-gray/linkedin@2x.png" width=3D"32" height=3D"auto" alt=3D"Linked=
+In" title=3D"LinkedIn" style=3D"display:block;height:auto;border:0"></a></t=
+d><td style=3D"padding:0 2px 0 2px">
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0D2O3DAMxfHT2J0GEknZYuEiK=
+eYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmODGYnauZiwlp5NuCoY104Syp-1CXM=
+ISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4SMAqUDHLJHnCeSB_t69DtkduvZz=
+teJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFentPD5fgpekOqnzoaCjmIJjm9ixRx=
+FMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur96O285NeCD_tUvb_q289ahrb_uPK=
+PA3AAD__7tTZic" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/pu=
+blic/resources/social-networks-icon-sets/t-outline-circle-dark-gray/telegra=
+m@2x.png" width=3D"32" height=3D"auto" alt=3D"Telegram" title=3D"Telegram" =
+Return-Path: <bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com>
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	 by sloti53n15 (Cyrus 3.11.0-alpha0-443-g0dc955c2a-fm-20240507.001-g0dc955c2) with LMTPA;
+	 Fri, 10 May 2024 07:59:02 -0400
+X-Cyrus-Session-Id: sloti53n15-1715342342-2243431-2-15331836412772472396
+X-Sieve: CMU Sieve 3.0
+X-Spam-known-sender: no
+X-Spam-sender-reputation: 500 (none)
+X-Spam-score: 1.9
+X-Spam-hits: DCC_CHECK 1.1, DCC_REPUT_95_98 0.7, HTML_IMAGE_RATIO_06 0.001,
+  HTML_MESSAGE 0.001, ME_NOAUTH 0.01, ME_SENDERREP_NEUTRAL 0.001,
+  MIME_HTML_ONLY 0.1, RCVD_IN_DNSWL_NONE -0.0001,
+  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED 0.001,
+  RCVD_IN_VALIDITY_RPBL_BLOCKED 0.001, SPF_HELO_NONE 0.001,
+  SPF_PASS -0.001, T_KAM_HTML_FONT_INVALID 0.01, LANGUAGES en,
+  BAYES_USED none, SA_VERSION 3.4.6
+X-Spam-source: IP='69.72.37.190', Host='m37-190.mailgun.net', Country='US',
+  FromHeader='com', MailFrom='com'
+X-Spam-charsets: subject='utf-8', html='utf-8'
+X-Resolved-to: socialplugsmm@sent.com
+X-Original-Delivered-to: martinsfola9@gmail.com
+X-Mail-from: bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com
+Received: from imap47.internal ([10.202.2.97])
+  by compute2.internal (LMTPProxy); Fri, 10 May 2024 07:59:02 -0400
+Received: from imap.gmail.com [172.253.62.108] by messagingengine.com
+  with IMAP for socialplugsmm@sent.com using TLSv1_3 TLS_AES_256_GCM_SHA384; Fri, 10 May 2024 07:59:01 -0400
+Delivered-To: martinsfola9@gmail.com
+Received: by 2002:a05:6a10:eb10:b0:55b:34f2:414 with SMTP id hx16csp382142pxb;
+        Fri, 10 May 2024 04:01:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEBf4k1vuL/SeP0drZbli1fn58qFxUYwtvcjD3iUlpR9vl+aPA0SrmYTzmGNpHaatvSxbS1
+X-Received: by 2002:a25:c74f:0:b0:de4:6046:acb1 with SMTP id 3f1490d57ef6-dee4f343e50mr2307361276.16.1715338884817;
+        Fri, 10 May 2024 04:01:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1715338884; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Y7bphLvvv2Ggr2Yg1eqfB0NGaVultjKAxm84FMm0fFsjOlQcrappqkOH2CGd13Yezc
+         Q5FvfNMgWzh88z4/sDulCETxT5YslGY13dDCBFNx74dcD68PZmcQUZ50Lixd5BJM0ALz
+         S+H6am9U2SvPZkTlvJ4SS1EXGQfwbOi3zLPvjhew9Gny2urRUwWP77DH358ZV7wrlznB
+         BMiuo2PvdDrh43QkEea1gi5xXBXg7yevq6Y3MVWpM9NyLdyYKlNt8UpMo2aI6/JQldeo
+         bRZSsR5Ri0wZdEwudoA7tJe0dbXXXl3VQIew16Gb1n8wiv8KkXNny053qTP2UK5TKMcp
+         tbqg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:list-unsubscribe-post:list-unsubscribe
+         :date:subject:from:sender:to:message-id:dkim-signature
+         :dkim-signature;
+        bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+        fh=qzatgbIRe4mzkK58SuDmAahfDxczMeJfbpHr7otDuWQ=;
+        b=PIDRoc1gYQ49yqu5NugnKSe4Q2xIzDilMZv4mnU3rN8naTN892vEhVGvEozvd1Ve4M
+         WbwIv+RcreYwJnKklwPSFYvjgKlB++pAbDHeyIqPVhY17JDKWc8/qdKGQLuhRKWCWDNQ
+         z1RwySl4pCd2AU26hKBpYLMWAucQs71xvDikSbcr4NDexD156TVAmVI1ijaVoIdT9Rv6
+         1dnjSUR0NlipgwPKHLxRo3ek9FBQmraxSNiXQEQdh5nk01ngO2ih0i0xHdUH/TMag4lH
+         nAgGyZhHc6fUnzdERq4MgQa+OmfV+9l727fWv/QQ4aWLS9iYwj7IkOQYoQW3GNQTOR6u
+         /4wA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@signal.bitcoin.com header.s=pic header.b=E24Niv+F;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=mJz+MToX;
+       spf=pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) smtp.mailfrom="bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=bitcoin.com
+Received: from m37-190.mailgun.net (m37-190.mailgun.net. [69.72.37.190])
+        by mx.google.com with UTF8SMTPS id 3f1490d57ef6-debd382432fsi1815964276.273.2024.05.10.04.01.24
+        for <martinsfola9@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 May 2024 04:01:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) client-ip=69.72.37.190;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@signal.bitcoin.com header.s=pic header.b=E24Niv+F;
+       dkim=pass header.i=@mailgun.org header.s=mg header.b=mJz+MToX;
+       spf=pass (google.com: domain of bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com designates 69.72.37.190 as permitted sender) smtp.mailfrom="bounce+208fba.9ba8c0-martinsfola9=gmail.com@signal.bitcoin.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=bitcoin.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=signal.bitcoin.com; q=dns/txt; s=pic; t=1715338883; x=1715346083;
+ h=Content-Transfer-Encoding: Content-Type: List-Unsubscribe-Post: List-Unsubscribe: Date: Subject: Subject: From: From: Sender: Sender: To: To: Message-Id: X-Feedback-Id;
+ bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+ b=E24Niv+F2fMYpd2VnTqnY6mit6wU0zj9t8JvzoAcUct+Cc0mk+laUl6CsoLcQkvIxAyZqyNLrMV7WHgrCOz1g+p9qXlXn6PCG3YLLBmWONY5aVZPRHhbZyshDvDXbWYaJxzthVy7Dkeww2hagNoU3vJQuTP1r7m9Txm4K73GIXc=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1715338883; x=1715346083;
+ h=Content-Transfer-Encoding: Content-Type: List-Unsubscribe-Post: List-Unsubscribe: Date: Subject: Subject: From: From: Sender: Sender: To: To: Message-Id: X-Feedback-Id;
+ bh=qDj9Y1cCQbeV5YFOGzyuaDYkZ0DICCNhJ75dELGrT4k=;
+ b=mJz+MToX3TDFMpb3K4gZMSZP8ej0dWqArh281x4/mpbv6Qz6T//KTonuqUEuz76Sq4KiESSsFbB1tfR8swMe4wdJ8UjZsmjBm9A8SMneanDpJMP4rU+6Hg/yryVOqYjN/1qYvcjj3yB8knKoMvcdObbFe/vA/5jZLmPuo3rB6Fc=
+X-Feedback-Id: noreply@bitcoin.com::649249e7a7e11ff52d4ad564:mailgun
+X-Mailgun-Sending-Ip: 69.72.37.190
+X-Mailgun-Sid: WyI3NTIxYSIsIm1hcnRpbnNmb2xhOUBnbWFpbC5jb20iLCI5YmE4YzAiXQ==
+Received: from onepush-web-enterprise-5445f6576c-4jtjs
+ (150.85.147.34.bc.googleusercontent.com [34.147.85.150]) by f7856f7f6da3 with
+ SMTP id 663dfe83220cacab4bdcebe3 (version=TLS1.3,
+ cipher=TLS_AES_128_GCM_SHA256); Fri, 10 May 2024 11:01:23 GMT
+Message-Id: <20240510110123.829ea2d3ba6ab637@signal.bitcoin.com>
+To: martinsfola9@gmail.com
+Sender: "Bitcoin.com Weekly Update" <noreply@bitcoin.com>
+From: "Bitcoin.com Weekly Update" <noreply@bitcoin.com>
+Subject: Kiyosaki's Crash Survival Rules, Snowden Warns Bitcoin Devs, and
+ More =?utf-8?b?4oCU?= Week in Review
+Date: Fri, 10 May 2024 11:01:22 +0000
+List-Unsubscribe: <https://unsubscribe.os-list.com/unsubscribe?token=eyJhbGciOiJFUzI1NiJ9.eyJpYXQiOjE3MTUzMzg4ODEsInVuc3Vic2NyaWJlX3Rva2VuIjoiYldGeWRHbHVjMlp2YkdFNVFHZHRZV2xzTG1OdmJUc3hNbUV5IiwiYXBwX2lkIjoiYjQxNWRlZDctODVjZC00ZjI3LWFlZmYtNTgzZGQ5N2YyOTVlIiwibm90aWZpY2F0aW9uX2lkIjoiMTBhOGVlNmUtMDFjMy00NTgxLTlmNjktOTAzYWEzOGVmOWZmIn0.87oSQAtiUkpc7lyvNTc0eG72Y2IczTjtcgpo_KKP6MlyL_rGFeByzyhGHp8XF3YryTgvXyXj0eGQ7YPfdRTIJw&aid=b415ded7-85cd-4f27-aeff-583dd97f295e&nid=10a8ee6e-01c3-4581-9f69-903aa38ef9ff>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Mailgun-Track: yes
+X-Mailgun-Track-Clicks: yes
+X-Mailgun-Track-Opens: yes
+X-Mailgun-Variables: {"notification_id":"10a8ee6e-01c3-4581-9f69-903aa38ef9ff","player_id":"6943c4fb-9239-444c-9f8b-bae3f845e1e7","app_id":"b415ded7-85cd-4f27-aeff-583dd97f295e","send_time":"1715338882"}
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+X-LinkName: martinsfola9@gmail.com
+X-ME-Message-Id: <1580736.7899fd4fe670ee7e400d8aafa2ba140288d028e2@popretr.messagingengine.com>
+X-LinkId: 1580736
+X-LinkUIDL: martinsfola9@gmail.com@imap.gmail.com 1-3437
+
+<!DOCTYPE html><html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"u=
+rn:schemas-microsoft-com:office:office" lang=3D"en"><head><title></title><m=
+eta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><met=
+a name=3D"viewport" content=3D"width=3Ddevice-width,initial-scale=3D1"><!--=
+[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInc=
+h><o:AllowPNG/></o:OfficeDocumentSettings></xml><![endif]--><!--[if !mso]><=
+!--><link href=3D"https://fonts.googleapis.com/css2?family=3DOpen+Sans:wght=
+@400;700&amp;display=3Dswap" rel=3D"stylesheet" type=3D"text/css"><!--<![en=
+dif]--><style>
+*{box-sizing:border-box}body{margin:0;padding:0}a[x-apple-data-detectors]{c=
+olor:inherit!important;text-decoration:inherit!important}#MessageViewBody a=
+{color:inherit;text-decoration:none}p{line-height:inherit}.desktop_hide,.de=
+sktop_hide table{mso-hide:all;display:none;max-height:0;overflow:hidden}.im=
+age_block img+div{display:none} @media (max-width:620px){.social_block.desk=
+top_hide .social-table{display:inline-block!important}.image_block div.full=
+Width{max-width:100%!important}.mobile_hide{display:none}.row-content{width=
+:100%!important}.stack .column{width:100%;display:block}.mobile_hide{min-he=
+ight:0;max-height:0;max-width:0;overflow:hidden;font-size:0}.desktop_hide,.=
+desktop_hide table{display:table!important;max-height:none!important}}
+</style><!--[if true]><style>.forceBgColor{background-color: white !importa=
+nt}</style><![endif]--></head><body class=3D"forceBgColor" style=3D"backgro=
+und-color:transparent;margin:0;padding:0;-webkit-text-size-adjust:none;text=
+-size-adjust:none"><span style=3D"color: transparent; display: none; height=
+: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: a=
+ll; visibility: hidden; width: 0;">Read all of the biggest stories of the w=
+eek.=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nb=
+sp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=
+=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=
+=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=
+=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=
+=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C=
+&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;=CD=8F=
+=E2=80=8C&nbsp;=CD=8F=E2=80=8C&nbsp;</span><table class=3D"nl-container" wi=
+dth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"prese=
+ntation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:tr=
+ansparent"><tbody><tr><td><table class=3D"row row-1" align=3D"center" width=
+=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presenta=
+tion" style=3D"mso-table-lspace:0;mso-table-rspace:0;background-size:auto">=
+<tbody><tr><td><table class=3D"row-content stack" align=3D"center" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0;background-size:auto;color:#000;width:=
+600px;margin:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1"=
+ width=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:=
+400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-align:top;b=
+order-top:0;border-right:0;border-bottom:0;border-left:0"><table class=3D"t=
+ext_block block-1" width=3D"100%" border=3D"0" cellpadding=3D"10" cellspaci=
+ng=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace=
+:0;word-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-f=
+amily:sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open=
+ Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:14.3=
+99999999999999px;color:#555;line-height:1.2"><p style=3D"margin:0;font-size=
+:12px;mso-line-height-alt:14.399999999999999px">&nbsp;</p></div></div></td>=
+</tr></tbody></table><table class=3D"image_block block-2" width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:10px;padding-left:30px;padding-right:10px;padding-top:=
+30px;width:100%"><div class=3D"alignment" align=3D"center" style=3D"line-he=
+ight:10px"><div style=3D"max-width:180px"><a href=3D"https://email.signal.b=
+itcoin.com/c/eJxMkD0OIyEMRk8zdERgmwEXU2yTa0QGTII0f8ogRXv7VbZK_X3Fe0_O89Hrks=
+mHqjXaFEq11CBa0dZsSFgrxwYc1NSFs6TijC4--oCYUkLzWtCDAs1RQkApLtbihFKuJA6RFUxfw=
+AG54J33zgPeErAKVMwyS54xTuSu_txlveU-ytH3Wzk2sy6vMc5rwj8T3Ce4fz6f332Cu9mP0Vsv=
+Mvqxfz28k6Q6q3W-oKWQvOU2s2WHIpi0cWvmXOWvvr_3mQkLtWwZkC0RFcstZZtFsSUK6jWa97L=
+Je_T9ascqPJF7btLX_4SX7vUx-vYTBP4FAAD__6JaZDE" target=3D"_blank" style=3D"ou=
+tline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.c=
+om/images/b415ded7-85cd-4f27-aeff-583dd97f295e/News%20Email%20Assets/full-l=
+ogo-black-1000px.png" style=3D"display:block;height:auto;border:0;width:100=
+%" width=3D"180" alt=3D"Bitcoin.com Logo" title=3D"Bitcoin.com Logo" height=
+=3D"auto"></a></div></div></td></tr></tbody></table><table class=3D"text_bl=
+ock block-3" width=3D"100%" border=3D"0" cellpadding=3D"25" cellspacing=3D"=
+0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;wor=
+d-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-family:=
+Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open=
+ Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:14.3=
+99999999999999px;color:#0f121a;line-height:1.2"><p style=3D"margin:0;font-s=
+ize:12px;mso-line-height-alt:14.399999999999999px"><strong><span style=3D"f=
+ont-size:20px;">Robert Kiyosaki shares crash survival rules</span></strong>=
+</p></div></div></td></tr></tbody></table></td></tr></tbody></table></td></=
+tr></tbody></table><table class=3D"row row-2" align=3D"center" width=3D"100=
+%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=
+=3D"row-content stack" align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-r=
+space:0;background-color:#fff;border-radius:0;color:#000;width:600px;margin=
+:0 auto" width=3D"600"><tbody><tr><td class=3D"column column-1" width=3D"10=
+0%" style=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-ali=
+gn:left;padding-bottom:5px;padding-top:5px;vertical-align:top;border-top:0;=
+border-right:0;border-bottom:0;border-left:0"><table class=3D"image_block b=
+lock-1" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><=
+tr><td class=3D"pad" style=3D"padding-left:25px;padding-right:25px;width:10=
+0%"><div class=3D"alignment" align=3D"center" style=3D"line-height:10px"><d=
+iv class=3D"fullWidth" style=3D"max-width:540px"><a href=3D"https://email.s=
+ignal.bitcoin.com/c/eJxM0DGO5CAQheHT2Fm1oAAbAgeb9DVGBRRtNDRYQE9rbr-alVaa-P3=
+J--i6PnI8vJYmctzBmhBBJ9yBOCUwVsXo9oTO8BoP58kGsfIhd2mUstaq9TyCQRGjDQptkCF53n=
+3wJjGi2Z2VvOYDBWphpJBSSFQ3i44Jo_K0kd_Uvmgx8qNSufk8Q8v1FtpzLcc55zUW9WfB-4L3y=
+u_xO1jw3pvnPuEzf7dBnxnGSZ0HhE7jhPHqX_mLCvRX4QFv6vX_dNIAz49XhTzhnUsBz0DgKUKr=
+vOB9rW3mlAPN3OqPkBRkmTcGIYMCbawElzYHTigiZTm5lNar0Df3n3xzWgWdPDhUDrTWAVyyHjy=
+xSlYblryv_XhSn7mO1Aq5RYvHk3L5931wjR8zP39R498AAAD__4U-hn8" target=3D"_blank"=
+ style=3D"outline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage=
+=2Eonesignal.com/images/b415ded7-85cd-4=
+f27-aeff-583dd97f295e/kiyosaki-crash-r=
+ules.jpg" style=3D"display:block;height:auto;border:0;width:100%" width=3D"=
+540" alt=3D"Robert Kiyosaki Shares Crash Survival Rules" title=3D"Robert Ki=
+yosaki Shares Crash Survival Rules" height=3D"auto"></a></div></div></td></=
+tr></tbody></table><table class=3D"text_block block-2" width=3D"100%" borde=
+r=3D"0" cellpadding=3D"25" cellspacing=3D"0" role=3D"presentation" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><t=
+d class=3D"pad"><div style=3D"font-family:Arial,sans-serif"><div class=3D""=
+ style=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica=
+,Arial,sans-serif;mso-line-height-alt:21.6px;color:#0f121a;line-height:1.8"=
+><p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">Rich Dad Poor Dad author Robert Kiyosaki ha=
+s cautioned that a crash has begun, highlighting its severity. The famous a=
+uthor also shared his crash survival rules.</span></p><p style=3D"margin:0;=
+font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p style=3D"margin:0;f=
+ont-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">He urged investors to invest in bitcoin, al=
+ongside gold and silver, emphasizing that they are =E2=80=9Creal money that=
+ goes up in value, especially in a market crash.=E2=80=9D</span></p><p styl=
+e=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p dir=
+=3D"ltr" style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;"><a href=3D"https://email.signal.bitcoin.com=
+/c/eJxM0DGO5CAQheHT2Fm1oAAbAgeb9DVGBRRtNDRYQE9rbr-alVaa-P3J--i6PnI8vJYmctzB=
+mhBBJ9yBOCUwVsXo9oTO8BoP58kGsfIhd2mUstaq9TyCQRGjDQptkCF53n3wJjGi2Z2VvOYDBWp=
+hpJBSSFQ3i44Jo_K0kd_Uvmgx8qNSufk8Q8v1FtpzLcc55zUW9WfB-4L3yu_xO1jw3pvnPuEzf7=
+dBnxnGSZ0HhE7jhPHqX_mLCvRX4QFv6vX_dNIAz49XhTzhnUsBz0DgKUKrvOB9rW3mlAPN3OqPk=
+BRkmTcGIYMCbawElzYHTigiZTm5lNar0Df3n3xzWgWdPDhUDrTWAVyyHjyxSlYblryv_XhSn7mO=
+1Aq5RYvHk3L5931wjR8zP39R498AAAD__4U-hn8" target=3D"_blank" style=3D"text-de=
+coration: underline; color: #007cff;" rel=3D"noopener">Read More</a></span>=
+</p></div></div></td></tr></tbody></table><table class=3D"divider_block blo=
+ck-3" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><t=
+r><td class=3D"pad" style=3D"padding-bottom:20px;padding-left:25px;padding-=
+right:25px;padding-top:10px"><div class=3D"alignment" align=3D"center"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" w=
+idth=3D"100%" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><t=
+d class=3D"divider_inner" style=3D"font-size:1px;line-height:1px;border-top=
+:1px solid #f1f1f3"><span>=E2=80=8A</span></td></tr></tbody></table></div><=
+/td></tr></tbody></table><table class=3D"text_block block-4" width=3D"100%"=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:break-word">
+<tbody><tr><td class=3D"pad" style=3D"padding-bottom:5px;padding-left:25px;=
+padding-right:25px;padding-top:5px"><div style=3D"font-family:sans-serif"><=
+div class=3D"" style=3D"font-size:12px;font-family:'Open Sans','Helvetica N=
+eue',Helvetica,Arial,sans-serif;mso-line-height-alt:24px;color:#0f121a;line=
+-height:2"><p style=3D"margin:0;font-size:14px;text-align:left;mso-line-hei=
+ght-alt:26px">
+<span style=3D"font-size:13px;">Join the Bitcoin.com News Telegram channel =
+for the latest crypto news updates, sent straight to your phone!</span></p>=
+</div></div></td></tr></tbody></table><table class=3D"button_block block-5"=
+ width=3D"100%" border=3D"0" cellpadding=3D"10" cellspacing=3D"0" role=3D"p=
+resentation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td=
+ class=3D"pad"><div class=3D"alignment" align=3D"center"><!--[if mso]>
+<v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schem=
+as-microsoft-com:office:word" href=3D"https://email.signal.bitcoin.com/c/eJ=
+xM0D2O3DAMxfHT2J0GEknZYuEiKeYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmOD=
+GYnauZiwlp5NuCoY104Syp-1CXMISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4=
+SMAqUDHLJHnCeSB_t69DtkduvZzteJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFen=
+tPD5fgpekOqnzoaCjmIJjm9ixRxFMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur9=
+6O285NeCD_tUvb_q289ahrb_uPKPA3AAD__7tTZic" style=3D"height:38px;width:123px=
+;v-text-anchor:middle;" arcsize=3D"11%" stroke=3D"false" fillcolor=3D"#2793=
+ff">
+<w:anchorlock/>
+<v:textbox inset=3D"0px,0px,0px,0px">
+<center style=3D"color:#ffffff; font-family:Arial, sans-serif; font-size:16=
+px">
+<![endif]-->
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0D2O3DAMxfHT2J0GEknZYuEiK=
+eYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmODGYnauZiwlp5NuCoY104Syp-1CXM=
+ISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4SMAqUDHLJHnCeSB_t69DtkduvZz=
+teJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFentPD5fgpekOqnzoaCjmIJjm9ixRx=
+FMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur96O285NeCD_tUvb_q289ahrb_uPK=
+PA3AAD__7tTZic" target=3D"_blank" style=3D"text-decoration:none;display:inl=
+ine-block;color:#ffffff;background-color:#2793ff;border-radius:4px;width:au=
+to;border-top:0px solid transparent;font-weight:400;border-right:0px solid =
+transparent;border-bottom:0px solid transparent;border-left:0px solid trans=
+parent;padding-top:5px;padding-bottom:5px;font-family:'Open Sans', 'Helveti=
+ca Neue', Helvetica, Arial, sans-serif;font-size:16px;text-align:center;mso=
+-border-alt:none;word-break:keep-all;"><span style=3D"padding-left:20px;pad=
+ding-right:20px;font-size:16px;display:inline-block;letter-spacing:normal;"=
+><span style=3D"word-break: break-word; line-height: 28.8px;">Follow now</s=
+pan></span></a>
+<!--[if mso]></center></v:textbox></v:roundrect><![endif]--></div></td></tr=
+></tbody></table><table class=3D"divider_block block-6" width=3D"100%" bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D=
+"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=
+=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padding-top:20=
+px"><div class=3D"alignment" align=3D"center"><table border=3D"0" cellpaddi=
+ng=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"ms=
+o-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divider_inner"=
+ style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f1f3"><span=
+>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbody></table>=
+<table class=3D"image_block block-7" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0=
+;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"width:100%;paddi=
+ng-right:0;padding-left:0"><div class=3D"alignment" align=3D"center" style=
+=3D"line-height:10px"><div class=3D"fullWidth" style=3D"max-width:540px"><a=
+ href=3D"https://email.signal.bitcoin.com/c/eJxM0LuOIyEQheGnaTJaQBW3oANv4Hg=
+3WI00iVVAYSP1Td2MrHn7kSdy_gXn_LTvt1amhNoWLl4Gm4vEarwkrlXaAKVEX020LMoUE4WsBE=
+_aawsQQgDxmIpBF1GjttZ5pyCBZZ81G1uL0tmLNhllUFmttFbawBhMZDIFEjlKDvyA6mz3leYxt=
+Z63to55W8Q8PXrfzwEug7kO5poOWvNjfNI8c3-Xg7n-N38__v35en5ekli33mrL1Nu2vs5pRYHZ=
+sVQ6g0QbtIzVRRkVEEHgGmsV-0zffLy4iwgZa5LRQJSImGWsIclEDDWgZc1eHNNCR2_rWbeZ4oD=
+qvlCbf2efvJZbb8tbJfMTAAD__zHXax0" target=3D"_blank" style=3D"outline:none" =
+tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.com/images/b4=
+15ded7-85cd-4f27-aeff-583dd97f295e/price_top.png" style=3D"display:block;he=
+ight:auto;border:0;width:100%" width=3D"540" alt=3D"crypto prices markets" =
+title=3D"crypto prices markets" height=3D"auto"></a></div></div></td></tr><=
+/tbody></table><table class=3D"image_block block-8" width=3D"100%" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"m=
+so-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D=
+"width:100%;padding-right:0;padding-left:0"><div class=3D"alignment" align=
+=3D"center" style=3D"line-height:10px"><div class=3D"fullWidth" style=3D"ma=
+x-width:540px"><a href=3D"https://email.signal.bitcoin.com/c/eJxM0L1u7CAQxf=
+GnMR0WDANmChf3FlvkAVKkWQ0w7CL5SzZSlLePNtX2v-KcPx_HvZU5ofVFyqSjz0VjhUmz1Kp9d=
+KXQVIG8qDJT4piNktlO1jsXY3TqOScyniggYE4yYUEjRIaAc_CAwak2gwE03hprjQU3RiBhKC5x=
+4BTcNKC52mPjZUyt571tY95XtczP3o9rcP8GuA1wSydv-Tl-87JIf5cD3Oij_v-Cx2e-ktr23mr=
+L3Nu-vc5Zw1EkiDY2O40-Wk01kCbjmF2USrWqY-EfOV88ELqMNWkCRxoRs6Yak04srkb0YmVS57=
+zy2dt21X1hGtA8Vm7L3-xLtnLvbX2rBL8BAAD__02XazA" target=3D"_blank" style=3D"o=
+utline:none" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.=
+com/images/b415ded7-85cd-4f27-aeff-583dd97f295e/price_bot.png" style=3D"dis=
+play:block;height:auto;border:0;width:100%" width=3D"540" alt=3D"crypto pri=
+ces markets" title=3D"crypto prices markets" height=3D"auto"></a></div></di=
+v></td></tr></tbody></table><table class=3D"divider_block block-9" width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"=
+pad" style=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padd=
+ing-top:20px"><div class=3D"alignment" align=3D"center"><table border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divi=
+der_inner" style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f=
+1f3"><span>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbod=
+y></table><table class=3D"text_block block-10" width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-tabl=
+e-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=
+=3D"pad" style=3D"padding-bottom:10px;padding-left:25px;padding-right:25px;=
+padding-top:25px"><div style=3D"font-family:sans-serif"><div class=3D"" sty=
+le=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Ari=
+al,sans-serif;mso-line-height-alt:14.399999999999999px;color:#555;line-heig=
+ht:1.2"><p style=3D"margin:0;font-size:14px;mso-line-height-alt:16.8px"><sp=
+an style=3D"font-size:22px;"><strong><span style=3D"">In the news</span></s=
+trong></span></p></div></div></td></tr></tbody></table><table class=3D"text=
+_block block-11" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0=
+;word-break:break-word"><tbody><tr><td class=3D"pad" style=3D"padding-botto=
+m:10px;padding-left:25px;padding-right:25px;padding-top:25px"><div style=3D=
+"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font=
+-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-he=
+ight-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;mso-lin=
+e-height-alt:21.6px"><strong><span style=3D"font-size:15px;"><a href=3D"htt=
+ps://email.signal.bitcoin.com/c/eJxM0LFu5CAQgOGnsbtZwYANFC6u8WtEAwy7SPZgGS6=
+rvP0ppxTpv-b_6bo-at6i1Uvm7MAvKYMt6IC4FFi8yTm4gmHhOW8hkk9q5k07vRjjvTfza0tkAj=
+nL3q2ElohXg5STsys6lRPOdUOFVi1aaa00mofHwITZRFoprsZNVvX6FDoesY7UqjxSO-dje41x9=
+cn8mXCfcBd-999gwr1Le2cWqL3_5Q6lCh3wpluqPGE0-NGQ-ZOPdvHdoQlcd_2k9AUsL5LEJ8vo=
+E-6ztFFLTTRqk-8rWpFnXhmUTgbs4jWEsgYIyhAZzyWUMl8HffH9zddgTbIlQkATwFqbIBQfIRK=
+b4u3Cmt18byfdo0ov7aAwWfU8qR7_eztL_hj1_LUX_wUAAP__4gqCmw" target=3D"_blank" =
+style=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><str=
+ong><span style=3D"font-size:15px;">Snowden issues warning to Bitcoin devel=
+opers on privacy enhancements</span></strong></a></span></strong><br></p><p=
+ style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">In the wake of the U.S. intensifying its cl=
+ampdown on privacy-oriented software and Zksnacks closing its coordinated c=
+oinjoin service, Edward Snowden has issued a stern warning to Bitcoin devel=
+opers.</span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21=
+=2E6px">&nbsp;</p><p style=3D"margin:0;f=
+ont-size:14px;mso-line-height-alt:25.=
+2px">
+<span style=3D"font-size:14px;">Snowden emphasizes that time is running out=
+ for enhancing privacy and insists it must be integrated at the protocol le=
+vel.</span></p></div></div></td></tr></tbody></table><table class=3D"text_b=
+lock block-12" width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;wo=
+rd-break:break-word"><tbody><tr><td class=3D"pad" style=3D"padding-bottom:1=
+0px;padding-left:25px;padding-right:25px;padding-top:25px"><div style=3D"fo=
+nt-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font-fa=
+mily:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-heigh=
+t-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;mso-line-h=
+eight-alt:21.6px">
+<strong><span style=3D"font-size:15px;"><a href=3D"https://email.signal.bit=
+coin.com/c/eJxM0DuO2zAQANDTSN0Y_H8KFWl8jcWQHNqDSJRCcrPw7YNdpHD_qofX9cFlS0ba=
+QsVDsLmAqcoDUq1ggy4l-qqipbVsMWHIYqVNemm1DiHo9blJq4N1GKL12TqPwUVMXrjsazFU_Mq=
+bEsoIK4WUQip9CyoSqqITOkxO-8WIwY-G-y3xzCe3Wz6Pdd-ec15j0b8WdV_UvdHXeAeLuv-m9s=
+IGV6fBhdqETn8-acwB_x0c3KjDgR3n82xQ-METd5gndPrL9AUNJ59tQO6va575s3dq-QWdHnzQo=
+u5rOydXzj_s-0oKDESOQMiswdggIVYXIQqNqAPVWOt67fii_s1dNDqbmiAqHcEYkyHWkCAh6RqM=
+JUl-7duBfXIb9dwxLkY8DuT9Z2FQKx-Tj7d09S8AAP__M4CLGQ" target=3D"_blank" style=
+=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener">Kenyan pr=
+esident asks bitcoin miner to review nation=E2=80=99s crypto regime</a></sp=
+an></strong><br></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt=
+:25.2px">
+<span style=3D"font-size:14px;">The Kenyan President William Ruto recently =
+revealed that his government has appointed Bitcoin mining company Marathon =
+Digital as its consultant to review its cryptocurrency regime.</span></p><p=
+ style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p><p =
+style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">The U.S.-based Bitcoin miner is reportedly =
+set to discuss electricity usage in cryptocurrency mining with the Kenyan E=
+nergy Ministry.</span></p></div></div></td></tr></tbody></table><table clas=
+s=3D"text_block block-13" width=3D"100%" border=3D"0" cellpadding=3D"25" ce=
+llspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table=
+-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad"><div style=3D=
+"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-size:12px;font=
+-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-he=
+ight-alt:21.6px;color:#0f121a;line-height:1.8"><p style=3D"margin:0;font-si=
+ze:14px;mso-line-height-alt:25.2px"><a href=3D"https://email.signal.bitcoin=
+=2Ecom/c/eJxM0LGO4yAQgOGnsbuJgAEbChfX5D=
+VWAwwxOgIWkF3t259yVfr_bz66rq8cD6-liRx3=
+sCZE0EntQJwSGIsxuj0pZ3iNh_Nkg1j5kLs0iNZaXM_DcNwQHUVn4-atN0zSxhh9QIsew5oPJZQ=
+WRgophVR4s8oxqYieNvIb7osWIz8qlZvPM7Rcb6E913Kcc15jwT-Lui_qXvlnfAaLuv9Q71zBv1=
+LiOWEwD6gNqEzulWb-ZpgNXgNiK4U60IDOg_s3Q3i91_ALnvvfcebOcLYSc32AtBZ8LiW3CrlCo=
+HEu6r7WNnPKgWZu9Y0mBVnmjUHIgKCNleDS5sAJJELLyaW0XoV-ub_zzWkMOnlwCh1orQO4ZD14=
+YkxWG5a8r_14Up-5jtQKuUWLx5Ny-c8xuMavmZ8f-upfAAAA___QFI3X" target=3D"_blank"=
+ style=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><st=
+rong><span style=3D"font-size:15px;">Warren Buffett sees no alternative to =
+US dollar as reserve currency</span></strong></a><br>
+<span style=3D"font-size:14px;">Warren Buffett, chairman and CEO of Berkshi=
+re Hathaway, asserts that there is currently no viable alternative to the U=
+=2ES. dollar as the world=E2=80=99s reserv=
+e currency, suggesting that U.S. de=
+bt will remain acceptable =E2=80=9Cfor a very long time.=E2=80=9D</span></p=
+><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px">&nbsp;</p>=
+<p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px">
+<span style=3D"font-size:14px;">Berkshire currently sits on a cash pile of =
+$188 billion, which Buffett views as =E2=80=9Cquite attractive.=E2=80=9D</s=
+pan></p></div></div></td></tr></tbody></table><table class=3D"text_block bl=
+ock-14" width=3D"100%" border=3D"0" cellpadding=3D"25" cellspacing=3D"0" ro=
+le=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-bre=
+ak:break-word"><tbody><tr><td class=3D"pad"><div style=3D"font-family:Arial=
+,sans-serif"><div class=3D"" style=3D"font-size:12px;font-family:'Open Sans=
+','Helvetica Neue',Helvetica,Arial,sans-serif;mso-line-height-alt:21.6px;co=
+lor:#0f121a;line-height:1.8"><p style=3D"margin:0;font-size:14px;mso-line-h=
+eight-alt:25.2px">
+<strong><span style=3D"font-size:15px;"><a href=3D"https://email.signal.bit=
+coin.com/c/eJxM0D2O5CAQQOHT2FmN-LUhcLBJX2NUQFV3aTFYBs1obr_qjSZ42Ys-vK5PKUdy=
+2hcqOwSfCzg2OyAxgw-2lLiziZ7WcsSEIauVDr1rb20Iwa6vIwSPnB1uIXDRiTzbnW3Ys0HtsqN=
+VDqOMU14rrZU29iOYSGiKTbhh2uy-ODXk2bB-JJm5S_vI_Vzr8ZrzGov9s5jHYh6NvsfvYTEPaV=
+805kltAst9At_Y_lZpMOm8Ks3eIFEV-qIBo1dsCN9SKyTK_SSYr3dyF6h4P2lMyPfPNTvgGDQX8=
+1hbn8KScUpvbyitMBBtBEpnC84HDZG3CFFZRBuII_N6Vfyh-71v0dnsOEE0NoJzLkPkkCAhWQ7O=
+k6Z9vY8T7yltcK8YF6eeJ0r9TzColc8p5y9x8y8AAP__FnSKHQ" target=3D"_blank" style=
+=3D"text-decoration: underline; color: #007cff;" rel=3D"noopener"><strong><=
+span style=3D"font-size:15px;">Franklin Templeton believes SOL to become th=
+ird largest crypto asset</span></strong></a></span></strong><br>
+<span style=3D"font-size:14px;">Franklin Templeton, a leading investment fi=
+rm with over $1.5 trillion in assets under management (AUM), believes Solan=
+a has the potential to become the third-largest cryptocurrency in the marke=
+t.</span></p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:21.6px=
+">&nbsp;</p><p style=3D"margin:0;font-size:14px;mso-line-height-alt:25.2px"=
+>
+<span style=3D"font-size:14px;">The firm praised the resilience of the proj=
+ect, its continued airdrops, and the work developers have undertaken to fix=
+ the network=E2=80=99s recent congestion issues.</span></p></div></div></td=
+></tr></tbody></table><table class=3D"divider_block block-15" width=3D"100%=
+" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" st=
+yle=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" =
+style=3D"padding-bottom:20px;padding-left:25px;padding-right:25px;padding-t=
+op:20px"><div class=3D"alignment" align=3D"center"><table border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"divider_=
+inner" style=3D"font-size:1px;line-height:1px;border-top:1px solid #f1f1f3"=
+><span>=E2=80=8A</span></td></tr></tbody></table></div></td></tr></tbody></=
+table><table class=3D"heading_block block-16" width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table=
+-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" style=3D"padding=
+-bottom:5px;padding-left:25px;padding-right:25px;padding-top:5px;text-align=
+:center;width:100%"><h1 style=3D"margin:0;color:#555;direction:ltr;font-fam=
+ily:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;=
+font-weight:700;letter-spacing:normal;line-height:180%;text-align:left;marg=
+in-top:0;margin-bottom:0;mso-line-height-alt:23.400000000000002px"><span cl=
+ass=3D"tinyMce-placeholder">Sponsored by Bitcoin.com News</span></h1></td><=
+/tr></tbody></table><table class=3D"image_block block-17" width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad" sty=
+le=3D"width:100%;padding-right:0;padding-left:0"><div class=3D"alignment" a=
+lign=3D"center" style=3D"line-height:10px"><div class=3D"fullWidth" style=
+=3D"max-width:540px"><a href=3D"https://email.signal.bitcoin.com/c/eJxMkL2u=
+4yAQRp_GdEQwAxgKim38GlcDzCRI_pONNtq3X-VWqb-vOOfQef70louzvnGbdfS1aScwa2IR7SO=
+2lmaB5Fm1nArFahRnO1uPGGNE9cpoQ3A-UZk9kq81kDG-Sa2ARgx41TMYcMZbY62xgI8IiQkaFg=
+pUAs6TM3d_7rQ-Sh_16PujHpta82uM857wzwTLBMv7_f7eJ1io_eVr9JsnWNR-jC690ujH_nGyh=
+iJzYG1sRe18tDpJSDoZJMLIkkTUudI_vj73kBxWJ0UnwKSdc1UniUUXYpToPFue1ZU3ukbfbzlW=
+SpMzz436-kt7895-Rt--4sD_AAAA___dBmiX" target=3D"_blank" style=3D"outline:no=
+ne" tabindex=3D"-1"><img src=3D"https://beefree-storage.onesignal.com/image=
+s/b415ded7-85cd-4f27-aeff-583dd97f295e/News%20Email%20Assets/advertise-emai=
+l%402x.png" style=3D"display:block;height:auto;border:0;width:100%" width=
+=3D"540" alt=3D"Advertise on Bitcoin.com News" title=3D"Advertise on Bitcoi=
+n.com News" height=3D"auto"></a></div></div></td></tr></tbody></table><tabl=
+e class=3D"paragraph_block block-18" width=3D"100%" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspace:0=
+;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad" sty=
+le=3D"padding-bottom:5px;padding-left:25px;padding-right:25px;padding-top:5=
+px"><div style=3D"color:#555;direction:ltr;font-family:'Open Sans','Helveti=
+ca Neue',Helvetica,Arial,sans-serif;font-size:12px;font-weight:400;letter-s=
+pacing:0;line-height:180%;text-align:left;mso-line-height-alt:21.6px"><p st=
+yle=3D"margin:0">
+With 4 million monthly unique visitors, over 9,000,000 monthly pageviews, a=
+nd a massive social media following, don't miss the chance to <a href=3D"ht=
+tps://email.signal.bitcoin.com/c/eJxMkL2u4yAQRp_GdEQwAxgKim38GlcDzCRI_pONNt=
+q3X-VWqb-vOOfQef70louzvnGbdfS1aScwa2IR7SO2lmaB5Fm1nArFahRnO1uPGGNE9cpoQ3A-U=
+Zk9kq81kDG-Sa2ARgx41TMYcMZbY62xgI8IiQkaFgpUAs6TM3d_7rQ-Sh_16PujHpta82uM857w=
+zwTLBMv7_f7eJ1io_eVr9JsnWNR-jC690ujH_nGyhiJzYG1sRe18tDpJSDoZJMLIkkTUudI_vj7=
+3kBxWJ0UnwKSdc1UniUUXYpToPFue1ZU3ukbfbzlWSpMzz436-kt7895-Rt--4sD_AAAA___dBm=
+iX" target=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;"=
+ rel=3D"noopener">advertise</a> your crypto project or token with Bitcoin=
+=E2=80=A4com News. Reach out to <a href=3D"mailto:ads@bitcoin.com" target=
+=3D"_blank" style=3D"text-decoration: underline; color: #0068a5;" rel=3D"no=
+opener">ads@bitcoin.com</a> today!&nbsp;
+</p></div></td></tr></tbody></table><table class=3D"image_block block-19" w=
+idth=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"pres=
+entation" style=3D"mso-table-lspace:0;mso-table-rspace:0"><tbody><tr><td cl=
+ass=3D"pad" style=3D"padding-bottom:25px;padding-left:10px;padding-right:10=
+px;padding-top:25px;width:100%"><div class=3D"alignment" align=3D"center" s=
+tyle=3D"line-height:10px"><div style=3D"max-width:180px">
+<a href=3D"https://email.signal.bitcoin.com/c/eJxMkD0OIyEMRk8zdERgmwEXU2yTa=
+0QGTII0f8ogRXv7VbZK_X3Fe0_O89HrksmHqjXaFEq11CBa0dZsSFgrxwYc1NSFs6TijC4--oCY=
+UkLzWtCDAs1RQkApLtbihFKuJA6RFUxfwAG54J33zgPeErAKVMwyS54xTuSu_txlveU-ytH3Wzk=
+2sy6vMc5rwj8T3Ce4fz6f332Cu9mP0VsvMvqxfz28k6Q6q3W-oKWQvOU2s2WHIpi0cWvmXOWvvr=
+_3mQkLtWwZkC0RFcstZZtFsSUK6jWa97LJe_T9ascqPJF7btLX_4SX7vUx-vYTBP4FAAD__6JaZ=
+DE" target=3D"_blank" style=3D"outline:none" tabindex=3D"-1"><img src=3D"ht=
+tps://beefree-storage.onesignal.com/images/b415ded7-85cd-4f27-aeff-583dd97f=
+295e/News%20Email%20Assets/full-logo-black-1000px.png" style=3D"display:blo=
+ck;height:auto;border:0;width:100%" width=3D"180" alt=3D"Bitcoin.com Logo" =
+title=3D"Bitcoin.com Logo" height=3D"auto"></a></div></div></td></tr></tbod=
+y></table><table class=3D"social_block block-20" width=3D"100%" border=3D"0=
+" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-t=
+able-lspace:0;mso-table-rspace:0"><tbody><tr><td class=3D"pad"><div class=
+=3D"alignment" align=3D"center"><table class=3D"social-table" width=3D"216p=
+x" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" s=
+tyle=3D"mso-table-lspace:0;mso-table-rspace:0;display:inline-block"><tbody>=
+<tr><td style=3D"padding:0 2px 0 2px"><a href=3D"https://email.signal.bitco=
+in.com/c/eJxM0D2u5CAQBODTmAwL6MbQgYNN5hpPDXS_Qes_jb2y5var2WD18q-kquLj-OptLu=
+hjk5ZsjrVZ1JAsi6qNGVqjpIGimDZT4VydkdknHwFyzmCec0xEUhtMTA6amzCH2CoiRPRJkzd9D=
+i6gi95573yAMQcSDg0KT1wmSAO6s39vvIylX3Xv21j31Szz87qOc4BfQ3gM4XHf96hcpez77w8Y=
+wqP8ef-PbHKfZtuvrr3y1fftM8w7ziKTWOcrWIzZW9KJLDlghixKquZY-C2vD58IoaIWSwHIImK=
+1pLnYwgKaMYqXZF7zyq-rb6fuC9OA7nvlvvyrfMrWvq6-_ngo_A0AAP__5ftqZg" target=3D"=
+_blank"><img src=3D"https://app-rsrc.getbee.io/public/resources/social-netw=
+orks-icon-sets/t-outline-circle-dark-gray/facebook@2x.png" width=3D"32" hei=
+ght=3D"auto" alt=3D"Facebook" title=3D"Facebook" style=3D"display:block;hei=
+ght:auto;border:0"></a></td><td style=3D"padding:0 2px 0 2px"><a href=3D"ht=
+tps://email.signal.bitcoin.com/c/eJxMkLuOIyEQRb-mybCA4lVBB7srOdzIuVVAlY3UL3=
+UjrfbvR55o4nuDcw4dx7O3uXgbGrekc6hNe3FJE4vokKE1TOIwsGozFsrVKJ5tsgEg5wzqPXPEF=
+tkTJRMtZKouJsME4hDIWVF9dsZ5E6yx1lgHt-yQyTUoFKlESJM3V39ttNxKH3Xv263uq1rm9xjH=
+NcGvyd0ndx__-hh8frbJ3X8__jz-qm0fXXql0fftI2INZebI2tgK2odsNUpEjQaIILOgiDoW-s_=
+n5x7RQ_VSNDpA7b2vGiUXXYhBsg9sOalzXukcfbtkXwgnb14r9eUb8eKtPUdffxRxXwEAAP__KB=
+hkhA" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/public/resou=
+rces/social-networks-icon-sets/t-outline-circle-dark-gray/twitter@2x.png" w=
+idth=3D"32" height=3D"auto" alt=3D"Twitter" title=3D"Twitter" style=3D"disp=
+lay:block;height:auto;border:0"></a></td><td style=3D"padding:0 2px 0 2px">=
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0LGO3iAQBOCngQ4LWDBL4SKNX=
+-O0wO4dio2t35ase_voT1Jc_400M3SeH70tJbjYuCWDsTYTxCdDLGIiQms5ic-RdVtyIaxW8-KS=
+iwCICPprkYjRz8m2IoDYmMjVWFKIAS1EbLov3vpgo7POWedhQp-ZfINCM5UZkgr26p-Dtqn0ux5=
+9TPXY9bZ83fd5Kfil_Kr8-jzPtPXxm9s_oPxaj_2k8a38-j9o6rGbwc-l_KrHcXfple5-jPdKZw=
+mZZzbWVTAhojNZ5myyBSJAliyiz42--fXmcw5QgxSTPWQTQqgmCxZTiEEwRHac9GvZ6XX3ccmxU=
+VbBfu7Ut7_9Lx7t4-77j7v8nwAAAP__JMNvJg" target=3D"_blank"><img src=3D"https:=
+//app-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-outline-c=
+ircle-dark-gray/linkedin@2x.png" width=3D"32" height=3D"auto" alt=3D"Linked=
+In" title=3D"LinkedIn" style=3D"display:block;height:auto;border:0"></a></t=
+d><td style=3D"padding:0 2px 0 2px">
+<a href=3D"https://email.signal.bitcoin.com/c/eJxM0D2O3DAMxfHT2J0GEknZYuEiK=
+eYaBiWRuwL8hbGAQW4fTNJs_yve-8t1ra0umUKsWmeXYqmODGYnauZiwlp5NuCoY104Syp-1CXM=
+ISKmlHD8XowK2STGlBIAQijiY5mBQw0lK45tAQ_kY_Ah-AD4SMAqUDHLJHnCeSB_t69DtkduvZz=
+teJRzH7flu_frHvDXAM8Bnv2x6wDP9_u9_v7P1g87zt6sFentPD5fgpekOqnzoaCjmIJjm9ixRx=
+FMamw2Xpv80deHT0xYyLJjQHZEVBxbyi6LoiWKGnQeX8sur96O285NeCD_tUvb_q289ahrb_uPK=
+PA3AAD__7tTZic" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/pu=
+blic/resources/social-networks-icon-sets/t-outline-circle-dark-gray/telegra=
+m@2x.png" width=3D"32" height=3D"auto" alt=3D"Telegram" title=3D"Telegram" =
+style=3D"display:block;height:auto;border:0"></a></td><td style=3D"padding:=
+0 2px 0 2px"><a href=3D"https://email.signal.bitcoin.com/c/eJxMkLuO5SAQRL_G=
+ZFhA8-gOHGwyv3HVQDODxi9dI1n79ytvdNOqE1QdPs9Xr0v2NlSpSWMoVfvmkmZpTQeEWik1R0F=
+UXSgzFqNksckGAEQE9bOwEGb2GQwbzGgpsg3JFEnRxYJG9cUZ502wxlpjHczoSNhVyBw5R0iTN1=
+f_3nmdcx_l6Ptcjk2ty88Y5zXBn8l9Te7rvu959N9x_D71k3nzwb92uS-1H6O3Xnj0Y3-eWcMoE=
+kUbW0D7gFZTi6TJADOgNGpNnSv_lfeDR_JQfMuaHJD23hdNDbPOLNDQB7GS1HvZ-D36frVjZZq8=
+-d64r_83X7LX1-jbhyL3LwAA__-noWrp" target=3D"_blank"><img src=3D"https://app=
+-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-outline-circle=
+-dark-gray/tiktok@2x.png" width=3D"32" height=3D"auto" alt=3D"TikTok" title=
+=3D"TikTok" style=3D"display:block;height:auto;border:0"></a></td><td style=
+=3D"padding:0 2px 0 2px"><a href=3D"https://email.signal.bitcoin.com/c/eJxM=
+0LGO3CAQxvGnMR0WMIOBwkUuipUXiBRdcxpg2EVrY2fNabNvH22qq7-v-f3pOD5qniNqmzk76W3=
+KEotxkrgUaT3kHFwxwbLIc4jkkxI8a6ctgPcexHVOoJWGrNBH67BMQNEUmDhnRBezE3U2yqCyWm=
+mttIHRm8BkMkSaKE7gBlRnvTRax1h72msb076Jdb72fpwDfBvMMpjl8XiMz_2zf0Z-7YNZ0pVa4=
+3Uwy6_v3P_e3vf1x9vP3-je_vT3W4-3i2h7r6Um6nVvL6lW5JknlkonkGi9lqFMQQYFROC5hFLE=
+sdKT76_7FBASliiDgSARMclQfJSRGIpHy5qduM8b3XttZ9lXCgOqy0Z1_W84ueWPXrcvycy_AAA=
+A__8aHXC4" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/public/=
+resources/social-networks-icon-sets/t-outline-circle-dark-gray/youtube@2x.p=
+ng" width=3D"32" height=3D"auto" alt=3D"YouTube" title=3D"YouTube" style=3D=
+"display:block;height:auto;border:0"></a></td></tr></tbody></table></div></=
+td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table=
+><table class=3D"row row-3" align=3D"center" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-=
+lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content sta=
+ck" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background=
+-color:#fff;color:#333;width:600px;margin:0 auto" width=3D"600"><tbody><tr>=
+<td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;ms=
+o-table-rspace:0;font-weight:400;text-align:left;padding-bottom:25px;paddin=
+g-top:25px;vertical-align:top;border-top:0;border-right:0;border-bottom:0;b=
+order-left:0"><table class=3D"text_block block-1" width=3D"100%" border=3D"=
+0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-=
+table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td cla=
+ss=3D"pad"><div style=3D"font-family:Arial,sans-serif"><div class=3D"" styl=
+e=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Aria=
+l,sans-serif;mso-line-height-alt:14.399999999999999px;color:#999;line-heigh=
+t:1.2"><p style=3D"margin:0;font-size:18px;text-align:center;mso-line-heigh=
+t-alt:21.599999999999998px"><span style=3D"font-size:14px;">@2024&nbsp; Sai=
+nt Bitts, LLC</span><br>
+<span style=3D"font-size:14px;">858 Zenway Blvd, P.O. Box 1830, Frigate Bay=
+, Saint Kitts and Nevis&nbsp;</span></p></div></div></td></tr></tbody></tab=
+le><table class=3D"text_block block-2" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspac=
+e:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad">=
+<div style=3D"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-s=
+ize:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-seri=
+f;mso-line-height-alt:14.399999999999999px;color:#999;line-height:1.2"><p s=
+tyle=3D"margin:0;font-size:18px;text-align:center;mso-line-height-alt:21.59=
+9999999999998px">
+<span style=3D"font-size:14px;color:#808080;"><span style=3D"">This email w=
+as sent to  To unsubscribe or modify your subscriptions, please click <a hr=
+ef=3D"https://email.signal.bitcoin.com/c/eJxUksvOokgARp9Gdpi6oVULF_7tj8K0EA=
+2CsOnUFQsLMIKt8vQTO5lkev2d860Ov91-WbUSBAZKq6VPA6l8YtDS59oYP6BYKbY0iAXaUysmO=
+JXA0yu4hAHGlFLsXVYSCkkw4wYQwxhizBCDGV2gBWUKsKVnVwggAgIIIAQQ4TlFTHOksOALLhZ4=
+OSNgsHXH3VzYUfa2m8u-9dzqMo63YYbXMxTOUPjohocY5N0KPe8H39lh_HB_LzMcjv1VdzO80e_=
+4IrbSpjYOT1MEExuzuX7Ht_J8sGnzjffZadpPNUk330PU5Q-JcytR8uZF7M74-Juj_BE1vS2d2u=
+riuBO7vNm7GyqvKkzycFftjlWOXlO2halq45PEl0Sc8iCyT1uev55n5K5__ObwSoqjqzZyTDd5U=
+_0AoGoi_LMIXdWWY5LVU7U9BAkq32mWu48vWgZ4Ud1KFAJesMd_X_vs65Juc5e0p3G_CZv9G4Ak=
+q18_M9cmzXVMs_VUFt9Tus3btKjaqAPz19p9KQ376Hge6nGH1z16hnBSj_5ML3SdHztmMXoEdZR=
+HiXmLXZ0goPS--q26Iu67V3zR_Qmgp_oh_2mHqz6_Dq-11_WjNVby0fbdJyIIONV6oX0AJfZJQK=
+HPzIL5DGDOMdWGGePdHH_r-wdfMIIlMcJnCDOfECJ9ZqjwBdfYUBJoqJfefdXy-2i7wfSOsxkBd=
+cut-5PHoDv1a7Tt_2pE_wYAAP__e-Pnxw" target=3D"_blank" style=3D"text-decorati=
+on: underline; color: #007cff;" rel=3D"noopener">here</a>. Have feedback fo=
+r us? Send it <a href=3D"https://email.signal.bitcoin.com/c/eJxMkL2u6yAQhJ_=
+G7rBgF2y2cHEbv0a0wJIg4R_Z5Ebn7Y98qrSjbzSaj4_jUdIcrHFJ0qS8i0nZDJNiyVk5jynRlI=
+Gc9GmmwD7qXmYzGYfovcf-NZNFIYRIJBOKiy7dyWiBTMo-hL7MoMFqZ7Qx2gAOHkgYEgYeOYw4d=
+VZf5blxHUJpcS_bEPe1r_OrtePq8F8HSwfL5_MZ2vm-2lHq3m6kg0X-c31zkw6W7-62t5JL5Fb2=
+7T5oNHuRUZQ2EZV13ijKIynSyIxeMuXcH5V_5LzxkSxGm4MiQFLW2qgo-6ACC2ZvnRiZ-nNe-Wx=
+lu_JemTqrnyuX-jd_yZYeraxfpuA3AAD__1_Fbi4" target=3D"_blank" style=3D"text-d=
+ecoration: underline; color: #007cff;" rel=3D"noopener">here</a>.</span></s=
+pan>
+</p></div></div></td></tr></tbody></table></td></tr></tbody></table></td></=
+tr></tbody></table></td></tr></tbody></table><!-- End --><img width=3D"1px"=
+ height=3D"1px" alt=3D"" src=3D"https://email.signal.bitcoin.com/o/eJxMj0uO=
+KyEMAE-T3hFhbMBe9FkiA3YeUn-ipDfv9qPMavYlVZW-Xo851kaQh40aOPcRyFMNau4hM44h1ZN=
+kW8YqTbnHxVaokBGZGZd_K4BVjQV7T7nXLFh1ZCeOvaJAyctcU0wUM0SACAnvnMQ0DWxatBWsN4=
+qf-Tx0u7d59XMe937uy3Fe02fXa57HNxKislmxEKFjoMwQxIsEiaiKbC7uy2vT__b-4kUIO3kLk=
+lACEfUgzi00NXSmbGB1ea-7vq95fPzcVG4Un7vO7Vf_sWM8rrn_uU0_AQAA__8oDViQ"></body=
+></html>￼Enterstyle=3D"display:block;height:auto;border:0"></a></td><td style=3D"padding:=
+0 2px 0 2px"><a href=3D"https://email.signal.bitcoin.com/c/eJxMkLuO5SAQRL_G=
+ZFhA8-gOHGwyv3HVQDODxi9dI1n79ytvdNOqE1QdPs9Xr0v2NlSpSWMoVfvmkmZpTQeEWik1R0F=
+UXSgzFqNksckGAEQE9bOwEGb2GQwbzGgpsg3JFEnRxYJG9cUZ502wxlpjHczoSNhVyBw5R0iTN1=
+f_3nmdcx_l6Ptcjk2ty88Y5zXBn8l9Te7rvu959N9x_D71k3nzwb92uS-1H6O3Xnj0Y3-eWcMoE=
+kUbW0D7gFZTi6TJADOgNGpNnSv_lfeDR_JQfMuaHJD23hdNDbPOLNDQB7GS1HvZ-D36frVjZZq8=
+-d64r_83X7LX1-jbhyL3LwAA__-noWrp" target=3D"_blank"><img src=3D"https://app=
+-rsrc.getbee.io/public/resources/social-networks-icon-sets/t-outline-circle=
+-dark-gray/tiktok@2x.png" width=3D"32" height=3D"auto" alt=3D"TikTok" title=
+=3D"TikTok" style=3D"display:block;height:auto;border:0"></a></td><td style=
+=3D"padding:0 2px 0 2px"><a href=3D"https://email.signal.bitcoin.com/c/eJxM=
+0LGO3CAQxvGnMR0WMIOBwkUuipUXiBRdcxpg2EVrY2fNabNvH22qq7-v-f3pOD5qniNqmzk76W3=
+KEotxkrgUaT3kHFwxwbLIc4jkkxI8a6ctgPcexHVOoJWGrNBH67BMQNEUmDhnRBezE3U2yqCyWm=
+mttIHRm8BkMkSaKE7gBlRnvTRax1h72msb076Jdb72fpwDfBvMMpjl8XiMz_2zf0Z-7YNZ0pVa4=
+3Uwy6_v3P_e3vf1x9vP3-je_vT3W4-3i2h7r6Um6nVvL6lW5JknlkonkGi9lqFMQQYFROC5hFLE=
+sdKT76_7FBASliiDgSARMclQfJSRGIpHy5qduM8b3XttZ9lXCgOqy0Z1_W84ueWPXrcvycy_AAA=
+A__8aHXC4" target=3D"_blank"><img src=3D"https://app-rsrc.getbee.io/public/=
+resources/social-networks-icon-sets/t-outline-circle-dark-gray/youtube@2x.p=
+ng" width=3D"32" height=3D"auto" alt=3D"YouTube" title=3D"YouTube" style=3D=
+"display:block;height:auto;border:0"></a></td></tr></tbody></table></div></=
+td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table=
+><table class=3D"row row-3" align=3D"center" width=3D"100%" border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-=
+lspace:0;mso-table-rspace:0"><tbody><tr><td><table class=3D"row-content sta=
+ck" align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;background=
+:#fff;color:#333;width:600px;margin:0 auto" width=3D"600"><tbody><tr>=
+<td class=3D"column column-1" width=3D"100%" style=3D"mso-table-lspace:0;ms=
+o-table-rspace:0;font-weight:400;text-align:left;padding-bottom:25px;paddin=
+g-top:25px;vertical-align:top;border-top:0;border-right:0;border-bottom:0;b=
+order-left:0"><table class=3D"text_block block-1" width=3D"100%" border=3D"=
+0" cellpadding=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-=
+table-lspace:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td cla=
+ss=3D"pad"><div style=3D"font-family:Arial,sans-serif"><div class=3D"" styl=
+e=3D"font-size:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Aria=
+l,sans-serif;mso-line-height-alt:14.399999999999999px;color:#999;line-heigh=
+t:1.2"><p style=3D"margin:0;font-size:18px;text-align:center;mso-line-heigh=
+t-alt:21.599999999999998px"><span style=3D"font-size:14px;">@2024&nbsp; Sai=
+nt Bitts, LLC</span><br>
+<span style=3D"font-size:14px;">858 Zenway Blvd, P.O. Box 1830, Frigate Bay=
+, Saint Kitts and Nevis&nbsp;</span></p></div></div></td></tr></tbody></tab=
+le><table class=3D"text_block block-2" width=3D"100%" border=3D"0" cellpadd=
+ing=3D"10" cellspacing=3D"0" role=3D"presentation" style=3D"mso-table-lspac=
+e:0;mso-table-rspace:0;word-break:break-word"><tbody><tr><td class=3D"pad">=
+<div style=3D"font-family:Arial,sans-serif"><div class=3D"" style=3D"font-s=
+ize:12px;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-seri=
+f;mso-line-height-alt:14.399999999999999px;color:#999;line-height:1.2"><p s=
+tyle=3D"margin:0;font-size:18px;text-align:center;mso-line-height-alt:21.59=
+9999999999998px">
+<span style=3D"font-size:14px;color:#808080;"><span style=3D"">This email w=
+as sent to  To unsubscribe or modify your subscriptions, please click <a hr=
+ef=3D"https://email.signal.bitcoin.com/c/eJxUksvOokgARp9Gdpi6oVULF_7tj8K0EA=
